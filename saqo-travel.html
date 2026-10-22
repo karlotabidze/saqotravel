@@ -97,18 +97,6 @@
       outline-offset: 3px;
     }
 
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
-      white-space: nowrap;
-    }
-
     .skip-link {
       position: absolute;
       left: 1rem;
@@ -209,17 +197,13 @@
     .btn-ghost:hover { filter: none; background: var(--surface); }
     .btn-sm { padding: 0.55rem 0.9rem; font-size: 0.85rem; }
 
-    .hero {
-      padding-block: clamp(2rem, 6vw, 4.5rem);
-    }
-
+    .hero { padding-block: clamp(2rem, 6vw, 4.5rem); }
     .hero-grid {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
       gap: clamp(1.5rem, 4vw, 3.5rem);
       align-items: center;
     }
-
     .hero-grid > * { min-width: 0; }
     .hero h1 { font-size: clamp(2.1rem, 5.6vw, 3.9rem); margin-top: 0.8rem; }
     .hero-lead {
@@ -228,14 +212,12 @@
       color: var(--muted);
       max-width: 34rem;
     }
-
     .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
       margin-top: 1.75rem;
     }
-
     .included {
       display: flex;
       flex-wrap: wrap;
@@ -246,7 +228,6 @@
       font-size: 0.9rem;
       color: var(--muted);
     }
-
     .included li::before {
       content: "";
       display: inline-block;
@@ -265,7 +246,6 @@
       overflow: hidden;
       box-shadow: var(--shadow);
     }
-
     .board-head {
       display: flex;
       align-items: center;
@@ -276,7 +256,6 @@
       border-bottom: 1px solid var(--board-line);
       font-weight: 600;
     }
-
     .board-from { font-family: var(--f-mono); font-size: 0.85rem; color: var(--board-amber); }
     .board-scroll { overflow-x: auto; }
     .board table { width: 100%; border-collapse: collapse; }
@@ -288,27 +267,23 @@
       padding: 0.6rem 1rem;
       white-space: nowrap;
     }
-
     .board td {
       padding: 0.7rem 1rem;
       border-top: 1px solid var(--board-line);
       white-space: nowrap;
       font-size: 0.92rem;
     }
-
     .board td.code {
       font-family: var(--f-mono);
       color: var(--board-amber);
       letter-spacing: 0.08em;
     }
-
     .board td.time {
       font-family: var(--f-mono);
       font-size: 0.85rem;
       color: var(--board-text);
       font-variant-numeric: tabular-nums;
     }
-
     .board td.season { color: var(--board-dim); font-size: 0.85rem; }
     .board-note {
       padding: 0.8rem 1rem;
@@ -322,14 +297,12 @@
       padding-block: clamp(2.75rem, 7vw, 5.5rem);
       border-top: 1px solid var(--line);
     }
-
     .section-head {
       display: grid;
       gap: 0.8rem;
       max-width: 40rem;
       margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
     }
-
     .section-head p { color: var(--muted); }
 
     .dest-grid {
@@ -337,7 +310,6 @@
       grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr));
       gap: 1rem;
     }
-
     .dest {
       background: var(--surface);
       border: 1px solid var(--line);
@@ -349,7 +321,6 @@
       min-width: 0;
       box-shadow: 0 8px 22px rgba(15, 30, 51, 0.02);
     }
-
     .dest-code {
       font-family: var(--f-mono);
       font-size: 2.4rem;
@@ -357,7 +328,6 @@
       letter-spacing: 0.06em;
       color: var(--accent);
     }
-
     .dest h3 { margin-top: 0.25rem; }
     .dest-country { font-size: 0.85rem; color: var(--muted); margin-top: -0.4rem; }
     .dest p { font-size: 0.95rem; }
@@ -369,7 +339,6 @@
       padding: 0;
       list-style: none;
     }
-
     .tags li {
       font-size: 0.78rem;
       border: 1px solid var(--line);
@@ -377,7 +346,6 @@
       padding: 0.1rem 0.65rem;
       color: var(--muted);
     }
-
     .dest .btn { margin-top: auto; align-self: flex-start; }
 
     .formats {
@@ -385,7 +353,6 @@
       grid-template-columns: repeat(3, 1fr);
       border-top: 2px solid var(--fg);
     }
-
     .format {
       padding: 1.5rem 1.5rem 1.5rem 0;
       display: grid;
@@ -393,7 +360,6 @@
       align-content: start;
       min-width: 0;
     }
-
     .format + .format { padding-left: 1.5rem; border-left: 1px solid var(--line); }
     .format ul {
       margin: 0;
@@ -403,7 +369,6 @@
       gap: 0.45rem;
       font-size: 0.95rem;
     }
-
     .format li { padding-left: 1.1rem; position: relative; }
     .format li::before {
       content: "";
@@ -414,7 +379,6 @@
       height: 2px;
       background: var(--accent);
     }
-
     .format p { color: var(--muted); font-size: 0.95rem; }
 
     .steps {
@@ -426,7 +390,6 @@
       list-style: none;
       counter-reset: step;
     }
-
     .steps li {
       border-top: 2px solid var(--fg);
       padding-top: 1rem;
@@ -435,13 +398,11 @@
       align-content: start;
       min-width: 0;
     }
-
     .steps .n {
       font-family: var(--f-mono);
       color: var(--accent);
       font-size: 0.95rem;
     }
-
     .steps h3 { font-size: 1.1rem; }
     .steps p { font-size: 0.93rem; color: var(--muted); }
 
@@ -450,7 +411,6 @@
       grid-template-columns: 0.8fr 1.2fr;
       gap: clamp(1.5rem, 5vw, 4rem);
     }
-
     .why > * { min-width: 0; }
     .why-list {
       display: grid;
@@ -459,14 +419,12 @@
       padding: 0;
       list-style: none;
     }
-
     .why-list li {
       padding-block: 1.1rem;
       border-top: 1px solid var(--line);
       display: grid;
       gap: 0.3rem;
     }
-
     .why-list li:last-child { border-bottom: 1px solid var(--line); }
     .why-list strong {
       font-family: var(--f-display);
@@ -495,13 +453,11 @@
       gap: 1rem;
       box-shadow: 0 10px 24px rgba(15, 30, 51, 0.04);
     }
-
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
-
     .form-row > * { min-width: 0; }
     .field { display: grid; gap: 0.35rem; }
     .field label { font-size: 0.85rem; font-weight: 500; }
@@ -514,7 +470,6 @@
       border-radius: 4px;
       padding: 0.7rem 0.8rem;
     }
-
     .field textarea { resize: vertical; min-height: 5.5rem; }
     .field input::placeholder, .field textarea::placeholder { color: color-mix(in srgb, var(--muted) 80%, transparent); }
     .form-note { font-size: 0.85rem; color: var(--muted); }
@@ -526,21 +481,18 @@
       gap: 0.75rem;
       background: color-mix(in srgb, var(--surface) 70%, transparent);
     }
-
     .result pre {
       margin: 0;
       white-space: pre-wrap;
       overflow-wrap: anywhere;
       font: 400 0.92rem/1.6 var(--f-body);
     }
-
     .result-actions {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 0.75rem;
     }
-
     .result-status { font-size: 0.85rem; color: var(--muted); }
     .foot {
       border-top: 1px solid var(--line);
@@ -561,14 +513,12 @@
       .steps { grid-template-columns: repeat(2, 1fr); }
       .nav { display: none; }
     }
-
     @media (max-width: 560px) {
       .steps { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .board .season, .board .col-season { display: none; }
       .brand-tag { display: none; }
     }
-
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .btn { transition: none; }
@@ -898,7 +848,7 @@
           <div class="result" id="result" hidden aria-live="polite">
             <pre id="result-text"></pre>
             <div class="result-actions">
-              <a class="btn btn-sm" id="mail-link" href="mailto:karlotabidze@gmail.com">გახსენით ელფოსტა</a>
+              <a class="btn btn-sm" id="mail-link" href="#" target="_blank" rel="noopener noreferrer">გახსენით ელფოსტა</a>
               <button class="btn btn-ghost btn-sm" type="button" id="copy-btn">დააკოპირეთ ტექსტი</button>
               <span class="result-status" id="copy-status" role="status" aria-live="polite"></span>
             </div>
@@ -947,10 +897,43 @@
       const resultText = document.getElementById('result-text');
       const copyBtn = document.getElementById('copy-btn');
       const status = document.getElementById('copy-status');
+      const mailLink = document.getElementById('mail-link');
 
       function readField(id) {
         const el = document.getElementById(id);
         return el ? el.value.trim() : '';
+      }
+
+      function buildGmailUrl(subject, body) {
+        return 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('karlotabidze@gmail.com') + '&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      }
+
+      function buildMailtoUrl(subject, body) {
+        return 'mailto:karlotabidze@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      }
+
+      function openMailClient(subject, body) {
+        const gmailUrl = buildGmailUrl(subject, body);
+        const mailtoUrl = buildMailtoUrl(subject, body);
+
+        const popup = window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+        if (!popup) {
+          window.location.href = mailtoUrl;
+          return;
+        }
+
+        if (mailLink) {
+          mailLink.href = gmailUrl;
+        }
+      }
+
+      if (mailLink) {
+        mailLink.addEventListener('click', function (event) {
+          event.preventDefault();
+          const subject = mailLink.dataset.subject || 'მოთხოვნა';
+          const body = mailLink.dataset.body || '';
+          openMailClient(subject, body);
+        });
       }
 
       if (form) {
@@ -983,16 +966,17 @@
             'გთხოვთ, მომამზადოთ შეთავაზება.'
           ].filter(Boolean);
 
+          const bodyText = lines.join('\n');
+          const subject = 'მოთხოვნა: ' + destination + ', ' + readField('f-month');
+
           if (resultText) {
-            resultText.textContent = lines.join('\n');
+            resultText.textContent = bodyText;
           }
 
-          const subject = 'მოთხოვნა: ' + destination + ', ' + readField('f-month');
-          const mailLink = document.getElementById('mail-link');
           if (mailLink) {
-            mailLink.href = 'mailto:karlotabidze@gmail.com'
-              + '?subject=' + encodeURIComponent(subject)
-              + '&body=' + encodeURIComponent(lines.join('\n'));
+            mailLink.dataset.subject = subject;
+            mailLink.dataset.body = bodyText;
+            mailLink.href = buildGmailUrl(subject, bodyText);
           }
 
           if (result) {
@@ -1009,7 +993,7 @@
 
       if (copyBtn) {
         copyBtn.addEventListener('click', function () {
-          var text = resultText ? resultText.textContent : '';
+          const text = resultText ? resultText.textContent : '';
 
           function fallback() {
             if (!resultText) return;
