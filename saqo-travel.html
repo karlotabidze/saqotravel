@@ -1,608 +1,1040 @@
-<title>საქო თრეველი</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Noto+Sans+Georgian:wght@400;500;600&family=Noto+Serif+Georgian:wght@600;700&display=swap">
-<style>
-/* Layout: sticky bar, hero with headline left and an airport departure board right, then destinations grid, three ruled formats, four-step sequence, why-us split, contact split. */
-:root {
-  --bg: #EDF0F3;
-  --surface: #F8F9FB;
-  --fg: #0F1E33;
-  --muted: #4B5B70;
-  --line: #C9D1DB;
-  --accent: #B3263E;
-  --accent-fg: #FFFFFF;
-  --board: #0B1626;
-  --board-text: #E9EEF5;
-  --board-amber: #F2B84B;
-  --board-dim: #8797AE;
-  --board-line: #1F3049;
-  --f-display: "Noto Serif Georgian", Georgia, serif;
-  --f-body: "Noto Sans Georgian", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0A121E;
-    --surface: #111C2D;
-    --fg: #E8EDF3;
-    --muted: #9AA9BC;
-    --line: #25354C;
-    --accent: #E4677C;
-    --accent-fg: #1B0910;
-    --board: #050B14;
-    --board-line: #1B2B42;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0A121E;
-  --surface: #111C2D;
-  --fg: #E8EDF3;
-  --muted: #9AA9BC;
-  --line: #25354C;
-  --accent: #E4677C;
-  --accent-fg: #1B0910;
-  --board: #050B14;
-  --board-line: #1B2B42;
-  color-scheme: dark;
-}
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="საქო თრეველი — მოგზაურობა საქართველოდან: ავიაბილეთი, სასტუმრო, ტრანსფერი და ტურები.">
+  <meta name="theme-color" content="#B3263E">
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <title>საქო თრეველი | მოგზაურობა საქართველოდან</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Noto+Sans+Georgian:wght@400;500;600&family=Noto+Serif+Georgian:wght@600;700&display=swap">
+  <style>
+    :root {
+      --bg: #EDF0F3;
+      --surface: #F8F9FB;
+      --fg: #0F1E33;
+      --muted: #4B5B70;
+      --line: #C9D1DB;
+      --accent: #B3263E;
+      --accent-fg: #FFFFFF;
+      --board: #0B1626;
+      --board-text: #E9EEF5;
+      --board-amber: #F2B84B;
+      --board-dim: #8797AE;
+      --board-line: #1F3049;
+      --f-display: "Noto Serif Georgian", Georgia, serif;
+      --f-body: "Noto Sans Georgian", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+      --shadow: 0 12px 30px rgba(15, 30, 51, 0.08);
+    }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--f-body);
-  font-size: 1rem;
-  line-height: 1.65;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0 0 auto;
-  height: env(safe-area-inset-top, 0px);
-  background: var(--bg);
-  z-index: 10;
-}
-h1, h2, h3 { font-family: var(--f-display); font-weight: 700; line-height: 1.15; margin: 0; text-wrap: balance; }
-h2 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); }
-h3 { font-size: 1.25rem; }
-p { margin: 0; }
-a { color: var(--accent); }
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-.wrap { max-width: 1160px; margin-inline: auto; }
-.eyebrow { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; color: var(--accent); }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0A121E;
+        --surface: #111C2D;
+        --fg: #E8EDF3;
+        --muted: #9AA9BC;
+        --line: #25354C;
+        --accent: #E4677C;
+        --accent-fg: #1B0910;
+        --board: #050B14;
+        --board-line: #1B2B42;
+        color-scheme: dark;
+      }
+    }
 
-/* Header */
-.bar {
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  z-index: 20;
-  background: var(--bg);
-  border-bottom: 1px solid var(--line);
-}
-.bar-in { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.8rem; }
-.brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--fg); min-width: 0; }
-.brand svg { flex: none; }
-.brand-name { font-family: var(--f-display); font-weight: 700; font-size: 1.2rem; line-height: 1.1; display: block; }
-.brand-tag { font-size: 0.75rem; color: var(--muted); display: block; line-height: 1.2; }
-.nav { display: flex; gap: 1.5rem; }
-.nav a { color: var(--fg); text-decoration: none; font-size: 0.95rem; font-weight: 500; }
-.nav a:hover { color: var(--accent); }
-.btn {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--accent-fg);
-  font: 600 0.95rem/1.2 var(--f-body);
-  padding: 0.8rem 1.25rem;
-  border: 1px solid var(--accent);
-  border-radius: 4px;
-  text-decoration: none;
-  cursor: pointer;
-}
-.btn:hover { filter: brightness(1.08); }
-.btn-ghost { background: transparent; color: var(--fg); border-color: var(--fg); }
-.btn-ghost:hover { filter: none; background: var(--surface); }
-.btn-sm { padding: 0.55rem 0.9rem; font-size: 0.85rem; }
+    :root[data-theme="dark"] {
+      --bg: #0A121E;
+      --surface: #111C2D;
+      --fg: #E8EDF3;
+      --muted: #9AA9BC;
+      --line: #25354C;
+      --accent: #E4677C;
+      --accent-fg: #1B0910;
+      --board: #050B14;
+      --board-line: #1B2B42;
+      color-scheme: dark;
+    }
 
-/* Hero */
-.hero { padding-block: clamp(2rem, 6vw, 4.5rem); }
-.hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
-.hero-grid > * { min-width: 0; }
-.hero h1 { font-size: clamp(2.1rem, 5.6vw, 3.9rem); margin-top: 0.8rem; }
-.hero-lead { margin-top: 1.25rem; font-size: 1.1rem; color: var(--muted); max-width: 34rem; }
-.hero-cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
-.included { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; margin: 1.75rem 0 0; padding: 0; list-style: none; font-size: 0.9rem; color: var(--muted); }
-.included li::before { content: ""; display: inline-block; width: 0.5rem; height: 0.5rem; background: var(--accent); margin-right: 0.5rem; border-radius: 1px; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--f-body);
+      font-size: 1rem;
+      line-height: 1.65;
+      padding-left: max(16px, env(safe-area-inset-left, 0px));
+      padding-right: max(16px, env(safe-area-inset-right, 0px));
+    }
 
-/* Departure board */
-.board { background: var(--board); border: 1px solid var(--board-line); border-radius: 6px; color: var(--board-text); overflow: hidden; }
-.board-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; padding: 0.9rem 1rem; border-bottom: 1px solid var(--board-line); font-weight: 600; }
-.board-from { font-family: var(--f-mono); font-size: 0.85rem; color: var(--board-amber); }
-.board-scroll { overflow-x: auto; }
-.board table { width: 100%; border-collapse: collapse; }
-.board th { text-align: left; font-size: 0.75rem; font-weight: 500; color: var(--board-dim); padding: 0.6rem 1rem; white-space: nowrap; }
-.board td { padding: 0.7rem 1rem; border-top: 1px solid var(--board-line); white-space: nowrap; font-size: 0.92rem; }
-.board td.code { font-family: var(--f-mono); color: var(--board-amber); letter-spacing: 0.08em; }
-.board td.time { font-family: var(--f-mono); font-size: 0.85rem; color: var(--board-text); font-variant-numeric: tabular-nums; }
-.board td.season { color: var(--board-dim); font-size: 0.85rem; }
-.board-note { padding: 0.8rem 1rem; border-top: 1px solid var(--board-line); font-size: 0.78rem; color: var(--board-dim); line-height: 1.5; }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0 0 auto;
+      height: env(safe-area-inset-top, 0px);
+      background: var(--bg);
+      z-index: 10;
+    }
 
-/* Sections */
-.section { padding-block: clamp(2.75rem, 7vw, 5.5rem); border-top: 1px solid var(--line); }
-.section-head { display: grid; gap: 0.8rem; max-width: 40rem; margin-bottom: clamp(1.5rem, 4vw, 2.5rem); }
-.section-head p { color: var(--muted); }
+    h1, h2, h3 {
+      font-family: var(--f-display);
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 0;
+      text-wrap: balance;
+    }
 
-/* Destinations */
-.dest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr)); gap: 1rem; }
-.dest { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
-.dest-code { font-family: var(--f-mono); font-size: 2.4rem; line-height: 1; letter-spacing: 0.06em; color: var(--accent); }
-.dest h3 { margin-top: 0.25rem; }
-.dest-country { font-size: 0.85rem; color: var(--muted); margin-top: -0.4rem; }
-.dest p { font-size: 0.95rem; }
-.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
-.tags li { font-size: 0.78rem; border: 1px solid var(--line); border-radius: 999px; padding: 0.1rem 0.65rem; color: var(--muted); }
-.dest .btn { margin-top: auto; align-self: flex-start; }
+    h2 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); }
+    h3 { font-size: 1.25rem; }
+    p { margin: 0; }
+    a { color: var(--accent); }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
 
-/* Formats */
-.formats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--fg); }
-.format { padding: 1.5rem 1.5rem 1.5rem 0; display: grid; gap: 0.9rem; align-content: start; min-width: 0; }
-.format + .format { padding-left: 1.5rem; border-left: 1px solid var(--line); }
-.format ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.45rem; font-size: 0.95rem; }
-.format li { padding-left: 1.1rem; position: relative; }
-.format li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 0.5rem; height: 2px; background: var(--accent); }
-.format p { color: var(--muted); font-size: 0.95rem; }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+      white-space: nowrap;
+    }
 
-/* Steps */
-.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin: 0; padding: 0; list-style: none; counter-reset: step; }
-.steps li { border-top: 2px solid var(--fg); padding-top: 1rem; display: grid; gap: 0.5rem; align-content: start; min-width: 0; }
-.steps .n { font-family: var(--f-mono); color: var(--accent); font-size: 0.95rem; }
-.steps h3 { font-size: 1.1rem; }
-.steps p { font-size: 0.93rem; color: var(--muted); }
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -3rem;
+      background: var(--fg);
+      color: var(--bg);
+      padding: 0.75rem 1rem;
+      border-radius: 0.25rem;
+      z-index: 30;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
 
-/* Why */
-.why { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(1.5rem, 5vw, 4rem); }
-.why > * { min-width: 0; }
-.why-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
-.why-list li { padding-block: 1.1rem; border-top: 1px solid var(--line); display: grid; gap: 0.3rem; }
-.why-list li:last-child { border-bottom: 1px solid var(--line); }
-.why-list strong { font-family: var(--f-display); font-size: 1.1rem; font-weight: 700; }
-.why-list span { color: var(--muted); font-size: 0.95rem; }
+    .skip-link:focus {
+      top: 1rem;
+    }
 
-/* Contact */
-.contact { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(1.5rem, 5vw, 4rem); }
-.contact > * { min-width: 0; }
-.contact-info { display: grid; gap: 1.25rem; align-content: start; }
-.contact-info dl { margin: 0; display: grid; gap: 1rem; }
-.contact-info dt { font-size: 0.8rem; color: var(--muted); }
-.contact-info dd { margin: 0; font-weight: 500; overflow-wrap: anywhere; }
-.form { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: clamp(1.1rem, 3vw, 1.75rem); display: grid; gap: 1rem; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form-row > * { min-width: 0; }
-.field { display: grid; gap: 0.35rem; }
-.field label { font-size: 0.85rem; font-weight: 500; }
-.field input, .field select, .field textarea {
-  width: 100%;
-  font: 400 1rem/1.4 var(--f-body);
-  color: var(--fg);
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  padding: 0.7rem 0.8rem;
-}
-.field textarea { resize: vertical; min-height: 5.5rem; }
-.form-note { font-size: 0.85rem; color: var(--muted); }
-.result { border: 1px dashed var(--accent); border-radius: 4px; padding: 1rem; display: grid; gap: 0.75rem; }
-.result pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 400 0.92rem/1.6 var(--f-body); }
-.result-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
-.result-status { font-size: 0.85rem; color: var(--muted); }
+    .wrap { max-width: 1160px; margin-inline: auto; }
+    .eyebrow {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
 
-/* Footer */
-.foot { border-top: 1px solid var(--line); padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem; font-size: 0.85rem; color: var(--muted); }
+    .bar {
+      position: sticky;
+      top: env(safe-area-inset-top, 0px);
+      z-index: 20;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
 
-@media (max-width: 900px) {
-  .hero-grid, .why, .contact { grid-template-columns: 1fr; }
-  .formats { grid-template-columns: 1fr; }
-  .format, .format + .format { padding: 1.25rem 0; border-left: 0; }
-  .format + .format { border-top: 1px solid var(--line); }
-  .steps { grid-template-columns: repeat(2, 1fr); }
-  .nav { display: none; }
-}
-@media (max-width: 560px) {
-  .steps { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
-  .board .season, .board .col-season { display: none; }
-  .brand-tag { display: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
-</style>
+    .bar-in {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-block: 0.8rem;
+    }
 
-<header class="bar">
-  <div class="wrap bar-in">
-    <a class="brand" href="#top" aria-label="საქო თრეველი, მთავარი">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
-        <rect width="34" height="34" rx="7" fill="var(--accent)"/>
-        <path d="M7 24 C 12 10, 22 10, 27 18" fill="none" stroke="var(--accent-fg)" stroke-width="2" stroke-dasharray="3 3" stroke-linecap="round"/>
-        <circle cx="27" cy="18" r="3" fill="var(--accent-fg)"/>
-        <circle cx="7" cy="24" r="2" fill="var(--accent-fg)"/>
-      </svg>
-      <span>
-        <span class="brand-name">საქო თრეველი</span>
-        <span class="brand-tag">მოგზაურობა საქართველოდან</span>
-      </span>
-    </a>
-    <nav class="nav" aria-label="მთავარი მენიუ">
-      <a href="#destinations">მიმართულებები</a>
-      <a href="#formats">ფორმატები</a>
-      <a href="#process">როგორ მუშაობს</a>
-      <a href="#contact">კონტაქტი</a>
-    </nav>
-    <a class="btn btn-sm" href="#contact">მოითხოვეთ შეთავაზება</a>
-  </div>
-</header>
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+      color: var(--fg);
+      min-width: 0;
+    }
 
-<main id="top">
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <p class="eyebrow">მოგზაურობა საქართველოდან</p>
-        <h1>გაფრინდით თბილისიდან. დანარჩენს ჩვენ მივხედავთ.</h1>
-        <p class="hero-lead">საქო თრეველი გიგეგმავთ მოგზაურობას საქართველოდან: ავიაბილეთი, სასტუმრო, ტრანსფერი და დაზღვევა ერთ შეთავაზებაში, ქართულად და კონკრეტულ მენეჯერთან.</p>
-        <div class="hero-cta">
-          <a class="btn" href="#contact">მოითხოვეთ შეთავაზება</a>
-          <a class="btn btn-ghost" href="#destinations">იხილეთ მიმართულებები</a>
+    .brand svg { flex: none; }
+    .brand-name {
+      font-family: var(--f-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1.1;
+      display: block;
+    }
+    .brand-tag {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: block;
+      line-height: 1.2;
+    }
+
+    .nav { display: flex; gap: 1.5rem; }
+    .nav a {
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .nav a:hover { color: var(--accent); }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--accent-fg);
+      font: 600 0.95rem/1.2 var(--f-body);
+      padding: 0.8rem 1.25rem;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn:hover { filter: brightness(1.08); }
+    .btn:active { transform: translateY(1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--fg);
+      border-color: var(--fg);
+    }
+    .btn-ghost:hover { filter: none; background: var(--surface); }
+    .btn-sm { padding: 0.55rem 0.9rem; font-size: 0.85rem; }
+
+    .hero {
+      padding-block: clamp(2rem, 6vw, 4.5rem);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      align-items: center;
+    }
+
+    .hero-grid > * { min-width: 0; }
+    .hero h1 { font-size: clamp(2.1rem, 5.6vw, 3.9rem); margin-top: 0.8rem; }
+    .hero-lead {
+      margin-top: 1.25rem;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 34rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.75rem;
+    }
+
+    .included {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.1rem;
+      margin: 1.75rem 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .included li::before {
+      content: "";
+      display: inline-block;
+      width: 0.5rem;
+      height: 0.5rem;
+      background: var(--accent);
+      margin-right: 0.5rem;
+      border-radius: 1px;
+    }
+
+    .board {
+      background: var(--board);
+      border: 1px solid var(--board-line);
+      border-radius: 6px;
+      color: var(--board-text);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .board-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--board-line);
+      font-weight: 600;
+    }
+
+    .board-from { font-family: var(--f-mono); font-size: 0.85rem; color: var(--board-amber); }
+    .board-scroll { overflow-x: auto; }
+    .board table { width: 100%; border-collapse: collapse; }
+    .board th {
+      text-align: left;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--board-dim);
+      padding: 0.6rem 1rem;
+      white-space: nowrap;
+    }
+
+    .board td {
+      padding: 0.7rem 1rem;
+      border-top: 1px solid var(--board-line);
+      white-space: nowrap;
+      font-size: 0.92rem;
+    }
+
+    .board td.code {
+      font-family: var(--f-mono);
+      color: var(--board-amber);
+      letter-spacing: 0.08em;
+    }
+
+    .board td.time {
+      font-family: var(--f-mono);
+      font-size: 0.85rem;
+      color: var(--board-text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .board td.season { color: var(--board-dim); font-size: 0.85rem; }
+    .board-note {
+      padding: 0.8rem 1rem;
+      border-top: 1px solid var(--board-line);
+      font-size: 0.78rem;
+      color: var(--board-dim);
+      line-height: 1.5;
+    }
+
+    .section {
+      padding-block: clamp(2.75rem, 7vw, 5.5rem);
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      gap: 0.8rem;
+      max-width: 40rem;
+      margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    .section-head p { color: var(--muted); }
+
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 17.5rem), 1fr));
+      gap: 1rem;
+    }
+
+    .dest {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      min-width: 0;
+      box-shadow: 0 8px 22px rgba(15, 30, 51, 0.02);
+    }
+
+    .dest-code {
+      font-family: var(--f-mono);
+      font-size: 2.4rem;
+      line-height: 1;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+
+    .dest h3 { margin-top: 0.25rem; }
+    .dest-country { font-size: 0.85rem; color: var(--muted); margin-top: -0.4rem; }
+    .dest p { font-size: 0.95rem; }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tags li {
+      font-size: 0.78rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.1rem 0.65rem;
+      color: var(--muted);
+    }
+
+    .dest .btn { margin-top: auto; align-self: flex-start; }
+
+    .formats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 2px solid var(--fg);
+    }
+
+    .format {
+      padding: 1.5rem 1.5rem 1.5rem 0;
+      display: grid;
+      gap: 0.9rem;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .format + .format { padding-left: 1.5rem; border-left: 1px solid var(--line); }
+    .format ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.95rem;
+    }
+
+    .format li { padding-left: 1.1rem; position: relative; }
+    .format li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 0.5rem;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .format p { color: var(--muted); font-size: 0.95rem; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps li {
+      border-top: 2px solid var(--fg);
+      padding-top: 1rem;
+      display: grid;
+      gap: 0.5rem;
+      align-content: start;
+      min-width: 0;
+    }
+
+    .steps .n {
+      font-family: var(--f-mono);
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+
+    .steps h3 { font-size: 1.1rem; }
+    .steps p { font-size: 0.93rem; color: var(--muted); }
+
+    .why {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .why > * { min-width: 0; }
+    .why-list {
+      display: grid;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .why-list li {
+      padding-block: 1.1rem;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 0.3rem;
+    }
+
+    .why-list li:last-child { border-bottom: 1px solid var(--line); }
+    .why-list strong {
+      font-family: var(--f-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .why-list span { color: var(--muted); font-size: 0.95rem; }
+
+    .contact { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(1.5rem, 5vw, 4rem); }
+    .contact > * { min-width: 0; }
+    .contact-info { display: grid; gap: 1.25rem; align-content: start; }
+    .contact-info dl { margin: 0; display: grid; gap: 1rem; }
+    .contact-info dt { font-size: 0.8rem; color: var(--muted); }
+    .contact-info dd {
+      margin: 0;
+      font-weight: 500;
+      overflow-wrap: anywhere;
+    }
+
+    .form {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: clamp(1.1rem, 3vw, 1.75rem);
+      display: grid;
+      gap: 1rem;
+      box-shadow: 0 10px 24px rgba(15, 30, 51, 0.04);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-row > * { min-width: 0; }
+    .field { display: grid; gap: 0.35rem; }
+    .field label { font-size: 0.85rem; font-weight: 500; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      font: 400 1rem/1.4 var(--f-body);
+      color: var(--fg);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 0.7rem 0.8rem;
+    }
+
+    .field textarea { resize: vertical; min-height: 5.5rem; }
+    .field input::placeholder, .field textarea::placeholder { color: color-mix(in srgb, var(--muted) 80%, transparent); }
+    .form-note { font-size: 0.85rem; color: var(--muted); }
+    .result {
+      border: 1px dashed var(--accent);
+      border-radius: 4px;
+      padding: 1rem;
+      display: grid;
+      gap: 0.75rem;
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+    }
+
+    .result pre {
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font: 400 0.92rem/1.6 var(--f-body);
+    }
+
+    .result-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .result-status { font-size: 0.85rem; color: var(--muted); }
+    .foot {
+      border-top: 1px solid var(--line);
+      padding-block: 1.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .why, .contact { grid-template-columns: 1fr; }
+      .formats { grid-template-columns: 1fr; }
+      .format, .format + .format { padding: 1.25rem 0; border-left: 0; }
+      .format + .format { border-top: 1px solid var(--line); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .nav { display: none; }
+    }
+
+    @media (max-width: 560px) {
+      .steps { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .board .season, .board .col-season { display: none; }
+      .brand-tag { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">გადახვიდეთ მთავარ შემცველობაზე</a>
+
+  <header class="bar">
+    <div class="wrap bar-in">
+      <a class="brand" href="#top" aria-label="საქო თრეველი, მთავარი">
+        <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <rect width="34" height="34" rx="7" fill="var(--accent)"/>
+          <path d="M7 24 C 12 10, 22 10, 27 18" fill="none" stroke="var(--accent-fg)" stroke-width="2" stroke-dasharray="3 3" stroke-linecap="round"/>
+          <circle cx="27" cy="18" r="3" fill="var(--accent-fg)"/>
+          <circle cx="7" cy="24" r="2" fill="var(--accent-fg)"/>
+        </svg>
+        <span>
+          <span class="brand-name">საქო თრეველი</span>
+          <span class="brand-tag">მოგზაურობა საქართველოდან</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="მთავარი მენიუ">
+        <a href="#destinations">მიმართულებები</a>
+        <a href="#formats">ფორმატები</a>
+        <a href="#process">როგორ მუშაობს</a>
+        <a href="#contact">კონტაქტი</a>
+      </nav>
+
+      <a class="btn btn-sm" href="#contact">მოითხოვეთ შეთავაზება</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">მოგზაურობა საქართველოდან</p>
+          <h1>გაფრინდით თბილისიდან. დანარჩენს ჩვენ მივხედავთ.</h1>
+          <p class="hero-lead">საქო თრეველი დაგეგმავთ მოგზაურობას საქართველოდან: ავიაბილეთი, სასტუმრო, ტრანსფერი და დახმარება ყველა ეტაპზე.</p>
+
+          <div class="hero-cta">
+            <a class="btn" href="#contact">მოითხოვეთ შეთავაზება</a>
+            <a class="btn btn-ghost" href="#destinations">იხილეთ მიმართულებები</a>
+          </div>
+
+          <ul class="included" aria-label="რა შედის შეთავაზებაში">
+            <li>ავიაბილეთი</li>
+            <li>სასტუმრო</li>
+            <li>ტრანსფერი</li>
+            <li>დაზღვევა</li>
+          </ul>
         </div>
-        <ul class="included" aria-label="რა შედის შეთავაზებაში">
-          <li>ავიაბილეთი</li>
-          <li>სასტუმრო</li>
-          <li>ტრანსფერი</li>
-          <li>დაზღვევა</li>
+
+        <div class="board" role="region" aria-label="გამგზავრების ტაბლო თბილისიდან">
+          <div class="board-head">
+            <span>გამგზავრება</span>
+            <span class="board-from">TBS · თბილისი · <time id="clock">--:--</time></span>
+          </div>
+
+          <div class="board-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>მიმართულება</th>
+                  <th>კოდი</th>
+                  <th>ფრენა*</th>
+                  <th class="col-season">საუკეთესო პერიოდი</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>სტამბოლი</td><td class="code">IST</td><td class="time">~2 სთ 30 წთ</td><td class="season">აპრილი–ნოემბერი</td></tr>
+                <tr><td>დუბაი</td><td class="code">DXB</td><td class="time">~3 სთ 45 წთ</td><td class="season">ნოემბერი–მარტი</td></tr>
+                <tr><td>ანტალია</td><td class="code">AYT</td><td class="time">~3 სთ</td><td class="season">მაისი–ოქტომბერი</td></tr>
+                <tr><td>შარმ ელ-შეიხი</td><td class="code">SSH</td><td class="time">~4 სთ</td><td class="season">მთელი წელი</td></tr>
+                <tr><td>პარიზი</td><td class="code">CDG</td><td class="time">~5 სთ</td><td class="season">აპრილი–ოქტომბერი</td></tr>
+                <tr><td>რომი</td><td class="code">FCO</td><td class="time">~4 სთ</td><td class="season">აპრილი–ოქტომბერი</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="board-note">* ფრენის ხანგრძლივობა მიახლოებითია. რეისების არსებობა და ფასი შეიძლება განსხვავდებოდეს თარიღისა და სეზონის მიხედვით.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="destinations">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">მიმართულებები</p>
+          <h2>პოპულარული მიმართულებები საქართველოდან</h2>
+          <p>ექვსი მიმართულება დასაწყისისთვის. თუ თქვენი არჩევანი სიაში არ არის, შეგვატყობინეთ და მოვაწყობთ თქვენთვის სასურველ ვარიანტს.</p>
+        </div>
+
+        <div class="dest-grid">
+          <article class="dest">
+            <div class="dest-code">IST</div>
+            <h3>სტამბოლი</h3>
+            <p class="dest-country">თურქეთი</p>
+            <p>ორი კონტინენტზე გადაჭიმული ქალაქი: ბოსფორი, ბაზრები და ბიზანტიური არქიტექტურა ერთ ნახვაზე.</p>
+            <ul class="tags"><li>ქალაქი</li><li>ვიკენდი</li></ul>
+            <a class="btn btn-ghost btn-sm" href="#contact" data-dest="სტამბოლი (IST)">მოითხოვეთ შეთავაზება</a>
+          </article>
+
+          <article class="dest">
+            <div class="dest-code">DXB</div>
+            <h3>დუბაი</h3>
+            <p class="dest-country">არაბთა გაერთიანებული საემიროები</p>
+            <p>ცათამბჯენები, უდაბნოს საფარი და შოპინგი. ზამთარში ამინდი კომფორტულია.</p>
+            <ul class="tags"><li>ქალაქი</li><li>შოპინგი</li><li>ზამთარი</li></ul>
+            <a class="btn btn-ghost btn-sm" href="#contact" data-dest="დუბაი (DXB)">მოითხოვეთ შეთავაზება</a>
+          </article>
+
+          <article class="dest">
+            <div class="dest-code">AYT</div>
+            <h3>ანტალია</h3>
+            <p class="dest-country">თურქეთი</p>
+            <p>ტაურუსის მთები და ხმელთაშუა ზღვა. ოჯახური დასვენება „ყველაფერი შედის“ ფორმატით.</p>
+            <ul class="tags"><li>ზღვა</li><li>ოჯახი</li></ul>
+            <a class="btn btn-ghost btn-sm" href="#contact" data-dest="ანტალია (AYT)">მოითხოვეთ შეთავაზება</a>
+          </article>
+
+          <article class="dest">
+            <div class="dest-code">SSH</div>
+            <h3>შარმ ელ-შეიხი</h3>
+            <p class="dest-country">ეგვიპტე</p>
+            <p>წითელი ზღვა, მარჯნის რიფები და თბილი ზღვა თითქმის მთელი წელი.</p>
+            <ul class="tags"><li>ზღვა</li><li>დაივინგი</li></ul>
+            <a class="btn btn-ghost btn-sm" href="#contact" data-dest="შარმ ელ-შეიხი (SSH)">მოითხოვეთ შეთავაზება</a>
+          </article>
+
+          <article class="dest">
+            <div class="dest-code">CDG</div>
+            <h3>პარიზი</h3>
+            <p class="dest-country">საფრანგეთი</p>
+            <p>ლუვრი, სენა და მონმარტრი. საუკეთესოა რომანტიკული და კულტურული მოგზაურობისთვის.</p>
+            <ul class="tags"><li>ქალაქი</li><li>კულტურა</li></ul>
+            <a class="btn btn-ghost btn-sm" href="#contact" data-dest="პარიზი (CDG)">მოითხოვეთ შეთავაზება</a>
+          </article>
+
+          <article class="dest">
+            <div class="dest-code">FCO</div>
+            <h3>რომი</h3>
+            <p class="dest-country">იტალია</p>
+            <p>ფორუმი, ვატიკანი და ტრატორიები ვიწრო ქუჩებში. ისტორია ფეხით სავალ მანძილზე.</p>
+            <ul class="tags"><li>ქალაქი</li><li>ისტორია</li></ul>
+            <a class="btn btn-ghost btn-sm" href="#contact" data-dest="რომი (FCO)">მოითხოვეთ შეთავაზება</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="formats">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">ფორმატები</p>
+          <h2>სამი ფორმატი, ერთი საკონტაქტო პირი</h2>
+          <p>აირჩიეთ ახლოს მდგომი ვარიანტი. შემდეგ მას თქვენს თარიღებსა და ბიუჯეტთან მოარგებთ.</p>
+        </div>
+
+        <div class="formats">
+          <div class="format">
+            <h3>ზღვა და დასვენება</h3>
+            <p>ერთი ან ორი კვირა ზღვაზე, ზედმეტი ორგანიზების გარეშე.</p>
+            <ul>
+              <li>ავიაბილეთი წასვლა-წამოსვლაზე</li>
+              <li>სასტუმრო საკვების არჩეული ტიპით</li>
+              <li>ტრანსფერი აეროპორტიდან</li>
+              <li>სამოგზაურო დაზღვევა</li>
+            </ul>
+          </div>
+
+          <div class="format">
+            <h3>ქალაქური ტური</h3>
+            <p>რამდენიმე დღე ქალაქში, სადაც ყველაფერი ახლოსაა.</p>
+            <ul>
+              <li>ავიაბილეთი</li>
+              <li>სასტუმრო ცენტრში</li>
+              <li>ექსკურსიებისა და ბილეთების დაგეგმვა</li>
+              <li>მარშრუტი დღეების მიხედვით</li>
+            </ul>
+          </div>
+
+          <div class="format">
+            <h3>ჯგუფი და ოჯახი</h3>
+            <p>როცა მიფრინავს ოთხი ან ათი ადამიანი და ყველას ერთად უნდა ყოფნა.</p>
+            <ul>
+              <li>ერთობლივი ჯავშანი</li>
+              <li>ოჯახური ნომრები</li>
+              <li>ერთი საკონტაქტო პირი მთელ ჯგუფზე</li>
+              <li>საბუთების სია ყველა მგზავრისთვის</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">როგორ მუშაობს</p>
+          <h2>ოთხი ნაბიჯი გამგზავრებამდე</h2>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <span class="n">1</span>
+            <h3>მოგვწერეთ მოთხოვნა</h3>
+            <p>მიმართულება, თვე, მგზავრების რაოდენობა. თუ ჯერ არ გადაგიწყვეტიათ, გირჩევთ დაგეგმვასთან ერთად.</p>
+          </li>
+          <li>
+            <span class="n">2</span>
+            <h3>მიიღეთ შეთავაზება</h3>
+            <p>ბილეთი, სასტუმრო და ტრანსფერი ერთ დოკუმენტში, ფასებით და პირობებით.</p>
+          </li>
+          <li>
+            <span class="n">3</span>
+            <h3>დაადასტურეთ და გადაიხადეთ</h3>
+            <p>ვჯავშნით და გიგზავნით დასტურებს. საბუთების სიას წინასწარ მიიღებთ.</p>
+          </li>
+          <li>
+            <span class="n">4</span>
+            <h3>გაფრინდით</h3>
+            <p>მოგზაურობისას გვიკავშირდებით, თუ რეისი ან სასტუმრო შეიცვალა.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="wrap why">
+        <div class="section-head" style="margin-bottom:0;">
+          <p class="eyebrow">რატომ ჩვენ</p>
+          <h2>მოგზაურობა, რომელიც წინასწარ გასაგებია</h2>
+        </div>
+
+        <ul class="why-list">
+          <li>
+            <strong>ერთი შეთავაზება ყველაფერზე</strong>
+            <span>ბილეთს, სასტუმროს, ტრანსფერსა და დაზღვევას ერთად ხედავთ და ადარებთ.</span>
+          </li>
+          <li>
+            <strong>ქართულად და ადამიანთან</strong>
+            <span>გიპასუხებთ συγκεκριებული მენეჯერი, რომელმაც იცის თქვენი მოთხოვნა.</span>
+          </li>
+          <li>
+            <strong>საბუთები გამგზავრებამდე</strong>
+            <span>ვიზის, დაზღვევისა და მგზავრობის დოკუმენტების სიას წინასწარ მიიღებთ.</span>
+          </li>
+          <li>
+            <strong>კავშირი მოგზაურობისას</strong>
+            <span>თუ რეისი გადაიდო ან სასტუმროში პრობლემაა, მოგვწერეთ და ვიპოვით გამოსავალს.</span>
+          </li>
         </ul>
       </div>
+    </section>
 
-      <div class="board" role="region" aria-label="გამგზავრების ტაბლო თბილისიდან">
-        <div class="board-head">
-          <span>გამგზავრება</span>
-          <span class="board-from">TBS · თბილისი · <time id="clock">--:--</time></span>
-        </div>
-        <div class="board-scroll">
-          <table>
-            <thead>
-              <tr><th>მიმართულება</th><th>კოდი</th><th>ფრენა*</th><th class="col-season">საუკეთესო პერიოდი</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>სტამბოლი</td><td class="code">IST</td><td class="time">~2 სთ 30 წთ</td><td class="season">აპრილი–ნოემბერი</td></tr>
-              <tr><td>დუბაი</td><td class="code">DXB</td><td class="time">~3 სთ 45 წთ</td><td class="season">ნოემბერი–მარტი</td></tr>
-              <tr><td>ანტალია</td><td class="code">AYT</td><td class="time">~3 სთ</td><td class="season">მაისი–ოქტომბერი</td></tr>
-              <tr><td>შარმ ელ-შეიხი</td><td class="code">SSH</td><td class="time">~4 სთ</td><td class="season">მთელი წელი</td></tr>
-              <tr><td>პარიზი</td><td class="code">CDG</td><td class="time">~5 სთ</td><td class="season">აპრილი–ოქტომბერი</td></tr>
-              <tr><td>რომი</td><td class="code">FCO</td><td class="time">~4 სთ</td><td class="season">აპრილი–ოქტომბერი</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="board-note">* ფრენის ხანგრძლივობა მიახლოებითია. რეისების არსებობა და ფასი დამოკიდებულია სეზონსა და თარიღზე.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="destinations">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">მიმართულებები</p>
-        <h2>პოპულარული მიმართულებები საქართველოდან</h2>
-        <p>ექვსი მიმართულება დასაწყისისთვის. თუ თქვენი არჩევანი სიაში არ არის, მოგვწერეთ და მოვამზადებთ შეთავაზებას.</p>
-      </div>
-      <div class="dest-grid">
-        <article class="dest">
-          <div class="dest-code">IST</div>
-          <h3>სტამბოლი</h3>
-          <p class="dest-country">თურქეთი</p>
-          <p>ორ კონტინენტზე გადაჭიმული ქალაქი: ბოსფორი, ბაზრები და ბიზანტიური ტაძრები. კარგია 3–5 დღიანი გასვლისთვის.</p>
-          <ul class="tags"><li>ქალაქი</li><li>ვიკენდი</li></ul>
-          <a class="btn btn-ghost btn-sm" href="#contact" data-dest="სტამბოლი (IST)">მოითხოვეთ შეთავაზება</a>
-        </article>
-        <article class="dest">
-          <div class="dest-code">DXB</div>
-          <h3>დუბაი</h3>
-          <p class="dest-country">არაბთა გაერთიანებული საემიროები</p>
-          <p>ცათამბჯენები, უდაბნოს საფარი და შოპინგი. ზამთარში ამინდი კომფორტულია.</p>
-          <ul class="tags"><li>ქალაქი</li><li>შოპინგი</li><li>ზამთარი</li></ul>
-          <a class="btn btn-ghost btn-sm" href="#contact" data-dest="დუბაი (DXB)">მოითხოვეთ შეთავაზება</a>
-        </article>
-        <article class="dest">
-          <div class="dest-code">AYT</div>
-          <h3>ანტალია</h3>
-          <p class="dest-country">თურქეთი</p>
-          <p>ტაურუსის მთები და ხმელთაშუა ზღვა. ოჯახური დასვენება „ყველაფერი შედის“ სისტემით.</p>
-          <ul class="tags"><li>ზღვა</li><li>ოჯახი</li></ul>
-          <a class="btn btn-ghost btn-sm" href="#contact" data-dest="ანტალია (AYT)">მოითხოვეთ შეთავაზება</a>
-        </article>
-        <article class="dest">
-          <div class="dest-code">SSH</div>
-          <h3>შარმ ელ-შეიხი</h3>
-          <p class="dest-country">ეგვიპტე</p>
-          <p>წითელი ზღვა, მარჯნის რიფები და თბილი ზღვა თითქმის მთელი წელი.</p>
-          <ul class="tags"><li>ზღვა</li><li>დაივინგი</li></ul>
-          <a class="btn btn-ghost btn-sm" href="#contact" data-dest="შარმ ელ-შეიხი (SSH)">მოითხოვეთ შეთავაზება</a>
-        </article>
-        <article class="dest">
-          <div class="dest-code">CDG</div>
-          <h3>პარიზი</h3>
-          <p class="dest-country">საფრანგეთი</p>
-          <p>ლუვრი, სენა და მონმარტრი. საუკეთესოა რომანტიკული და კულტურული მოგზაურობისთვის.</p>
-          <ul class="tags"><li>ქალაქი</li><li>კულტურა</li></ul>
-          <a class="btn btn-ghost btn-sm" href="#contact" data-dest="პარიზი (CDG)">მოითხოვეთ შეთავაზება</a>
-        </article>
-        <article class="dest">
-          <div class="dest-code">FCO</div>
-          <h3>რომი</h3>
-          <p class="dest-country">იტალია</p>
-          <p>ფორუმი, ვატიკანი და ტრატორიები ვიწრო ქუჩებში. ისტორია ფეხით სავალ მანძილზე.</p>
-          <ul class="tags"><li>ქალაქი</li><li>ისტორია</li></ul>
-          <a class="btn btn-ghost btn-sm" href="#contact" data-dest="რომი (FCO)">მოითხოვეთ შეთავაზება</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="formats">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">ფორმატები</p>
-        <h2>სამი ფორმატი, ერთი საკონტაქტო პირი</h2>
-        <p>აირჩიეთ ახლოს მდგომი ვარიანტი. შემდეგ მას თქვენს თარიღებსა და ბიუჯეტზე მოვარგებთ.</p>
-      </div>
-      <div class="formats">
-        <div class="format">
-          <h3>ზღვა და დასვენება</h3>
-          <p>ერთი ან ორი კვირა ზღვაზე, ზედმეტი ორგანიზების გარეშე ორგანიზებას გაუწევს ყველაფერს საქო.</p>
-          <ul>
-            <li>ავიაბილეთი წასვლა-წამოსვლაზე</li>
-            <li>სასტუმრო საკვების არჩეული ტიპით</li>
-            <li>ტრანსფერი აეროპორტიდან</li>
-            <li>სამოგზაურო დაზღვევა</li>
-          </ul>
-        </div>
-        <div class="format">
-          <h3>ქალაქური ტური</h3>
-          <p>რამდენიმე დღე ქალაქში, სადაც ყველაფერი ახლოსაა.</p>
-          <ul>
-            <li>ავიაბილეთი</li>
-            <li>სასტუმრო ცენტრში</li>
-            <li>ექსკურსიებისა და ბილეთების დაგეგმვა</li>
-            <li>მარშრუტი დღეების მიხედვით</li>
-          </ul>
-        </div>
-        <div class="format">
-          <h3>ჯგუფი და ოჯახი</h3>
-          <p>როცა მიფრინავს ოთხი ან ათი ადამიანი და ყველას ერთად უნდა ყოფნა.</p>
-          <ul>
-            <li>ერთობლივი ჯავშანი</li>
-            <li>ოჯახური ნომრები</li>
-            <li>ერთი საკონტაქტო პირი მთელ ჯგუფზე</li>
-            <li>საბუთების სია ყველა მგზავრისთვის</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="process">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">როგორ მუშაობს</p>
-        <h2>ოთხი ნაბიჯი გამგზავრებამდე</h2>
-      </div>
-      <ol class="steps">
-        <li>
-          <span class="n">1</span>
-          <h3>მოგვწერეთ მოთხოვნა</h3>
-          <p>მიმართულება, თვე, მგზავრების რაოდენობა. თუ ჯერ არ გადაგიწყვეტიათ, გირჩევთ.</p>
-        </li>
-        <li>
-          <span class="n">2</span>
-          <h3>მიიღეთ შეთავაზება</h3>
-          <p>ბილეთი, სასტუმრო და ტრანსფერი ერთ დოკუმენტში, ფასებით და პირობებით.</p>
-        </li>
-        <li>
-          <span class="n">3</span>
-          <h3>დაადასტურეთ და გადაიხადეთ</h3>
-          <p>ვჯავშნით და გიგზავნით დასტურებს. საბუთების სიას წინასწარ მიიღებთ.</p>
-        </li>
-        <li>
-          <span class="n">4</span>
-          <h3>გაფრინდით</h3>
-          <p>მოგზაურობისას გვიკავშირდებით, თუ რეისი ან სასტუმრო შეიცვალა.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="section" id="why">
-    <div class="wrap why">
-      <div class="section-head" style="margin-bottom:0">
-        <p class="eyebrow">რატომ ჩვენ</p>
-        <h2>მოგზაურობა, რომელიც წინასწარ გასაგებია</h2>
-      </div>
-      <ul class="why-list">
-        <li>
-          <strong>ერთი შეთავაზება ყველაფერზე</strong>
-          <span>ბილეთს, სასტუმროს, ტრანსფერსა და დაზღვევას ერთად ხედავთ და ადარებთ.</span>
-        </li>
-        <li>
-          <strong>ქართულად და ადამიანთან</strong>
-          <span>გიპასუხებთ კონკრეტული მენეჯერი, რომელმაც იცის თქვენი მოთხოვნა.</span>
-        </li>
-        <li>
-          <strong>საბუთები გამგზავრებამდე</strong>
-          <span>ვიზის, დაზღვევისა და მგზავრობის დოკუმენტების სიას წინასწარ მიიღებთ.</span>
-        </li>
-        <li>
-          <strong>კავშირი მოგზაურობისას</strong>
-          <span>თუ რეისი გადაიდო ან სასტუმროში პრობლემაა, მოგვწერეთ და ვიპოვით გამოსავალს.</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="wrap contact">
-      <div class="contact-info">
-        <div class="section-head" style="margin-bottom:0">
-          <p class="eyebrow">კონტაქტი</p>
-          <h2>მოგვწერეთ, სად გინდათ წასვლა</h2>
-          <p>შეავსეთ ფორმა და მიიღებთ მზა ტექსტს. გამოგვიგზავნეთ ის ელფოსტით ან დაგვირეკეთ და შეთავაზებას მოგიმზადებთ.</p>
-        </div>
-        <dl>
-          <div><dt>ტელეფონი</dt><dd>+995 32 2 00 00 00</dd></div>
-          <div><dt>ელფოსტა</dt><dd>karlotabidze@gmail.com</dd></div>
-          <div><dt>მისამართი</dt><dd>თბილისი, საქართველო</dd></div>
-          <div><dt>სამუშაო საათები</dt><dd>ორშაბათი–შაბათი, 10:00–19:00</dd></div>
-        </dl>
-      </div>
-
-      <form class="form" id="req-form" novalidate>
-        <div class="form-row">
-          <div class="field">
-            <label for="f-name">სახელი</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" placeholder="მაგ. ნინო">
+    <section class="section" id="contact">
+      <div class="wrap contact">
+        <div class="contact-info">
+          <div class="section-head" style="margin-bottom:0;">
+            <p class="eyebrow">კონტაქტი</p>
+            <h2>მოგვწერეთ, სად გინდათ წასვლა</h2>
+            <p>შეავსეთ ფორმა და მიიღებთ მზა ტექსტს. გამოგვიგზავნეთ ის ელფოსტით ან მოგვატყობინეთ.</p>
           </div>
-          <div class="field">
-            <label for="f-phone">ტელეფონი</label>
-            <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="5XX XX XX XX">
+
+          <dl>
+            <div><dt>ტელეფონი</dt><dd>+995 32 2 00 00 00</dd></div>
+            <div><dt>ელფოსტა</dt><dd>karlotabidze@gmail.com</dd></div>
+            <div><dt>მისამართი</dt><dd>თბილისი, საქართველო</dd></div>
+            <div><dt>სამუშაო საათები</dt><dd>ორშაბათი–შაბათი, 10:00–19:00</dd></div>
+          </dl>
+        </div>
+
+        <form class="form" id="req-form" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">სახელი</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="მაგ. ნინო" required>
+            </div>
+            <div class="field">
+              <label for="f-phone">ტელეფონი</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="5XX XX XX XX">
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label for="f-dest">მიმართულება</label>
-          <select id="f-dest" name="dest">
-            <option>სტამბოლი (IST)</option>
-            <option>დუბაი (DXB)</option>
-            <option>ანტალია (AYT)</option>
-            <option>შარმ ელ-შეიხი (SSH)</option>
-            <option>პარიზი (CDG)</option>
-            <option>რომი (FCO)</option>
-            <option>სხვა, მირჩიეთ</option>
-          </select>
-        </div>
-        <div class="form-row">
+
           <div class="field">
-            <label for="f-month">გამგზავრების თვე</label>
-            <select id="f-month" name="month">
-              <option>იანვარი</option><option>თებერვალი</option><option>მარტი</option>
-              <option>აპრილი</option><option>მაისი</option><option>ივნისი</option>
-              <option>ივლისი</option><option>აგვისტო</option><option>სექტემბერი</option>
-              <option>ოქტომბერი</option><option>ნოემბერი</option><option>დეკემბერი</option>
+            <label for="f-dest">მიმართულება</label>
+            <select id="f-dest" name="dest" required>
+              <option value="">აირჩიეთ მიმართულება</option>
+              <option>სტამბოლი (IST)</option>
+              <option>დუბაი (DXB)</option>
+              <option>ანტალია (AYT)</option>
+              <option>შარმ ელ-შეიხი (SSH)</option>
+              <option>პარიზი (CDG)</option>
+              <option>რომი (FCO)</option>
+              <option>სხვა, მირჩიეთ</option>
             </select>
           </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="f-month">გამგზავრების თვე</label>
+              <select id="f-month" name="month">
+                <option>იანვარი</option><option>თებერვალი</option><option>მარტი</option>
+                <option>აპრილი</option><option>მაისი</option><option>ივნისი</option>
+                <option>ივლისი</option><option>აგვისტო</option><option>სექტემბერი</option>
+                <option>ოქტომბერი</option><option>ნოემბერი</option><option>დეკემბერი</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-pax">მგზავრების რაოდენობა</label>
+              <input id="f-pax" name="pax" type="number" min="1" max="30" value="2" inputmode="numeric">
+            </div>
+          </div>
+
           <div class="field">
-            <label for="f-pax">მგზავრების რაოდენობა</label>
-            <input id="f-pax" name="pax" type="number" min="1" max="30" value="2" inputmode="numeric">
+            <label for="f-note">დამატებითი ინფორმაცია</label>
+            <textarea id="f-note" name="note" placeholder="ბიუჯეტი, სასტუმროს ტიპი, ბავშვები, სასურველი თარიღები, თუ გადახდა ხდება ჩამოსვლის წინ"></textarea>
           </div>
-        </div>
-        <div class="field">
-          <label for="f-note">დამატებითი ინფორმაცია</label>
-          <textarea id="f-note" name="note" placeholder="ბიუჯეტი, სასტუმროს ტიპი, ბავშვები, სასურველი თარიღები"></textarea>
-        </div>
-        <button class="btn" type="submit">მოამზადეთ მოთხოვნის ტექსტი</button>
-        <p class="form-note">ფორმა ამზადებს წერილს მისამართზე karlotabidze@gmail.com. გაგზავნა ხდება თქვენი ელფოსტის პროგრამიდან.</p>
 
-        <div class="result" id="result" hidden>
-          <pre id="result-text"></pre>
-          <div class="result-actions">
-            <a class="btn btn-sm" id="mail-link" href="mailto:karlotabidze@gmail.com">გახსენით ელფოსტა</a>
-            <button class="btn btn-ghost btn-sm" type="button" id="copy-btn">დააკოპირეთ ტექსტი</button>
-            <span class="result-status" id="copy-status" role="status"></span>
+          <button class="btn" type="submit">მოამზადეთ მოთხოვნის ტექსტი</button>
+          <p class="form-note">ფორმა ამზადებს წერილს მისამართზე karlotabidze@gmail.com. გაგზავნა ხდება თქვენთვის მოსახერხებელი გზით.</p>
+
+          <div class="result" id="result" hidden aria-live="polite">
+            <pre id="result-text"></pre>
+            <div class="result-actions">
+              <a class="btn btn-sm" id="mail-link" href="mailto:karlotabidze@gmail.com">გახსენით ელფოსტა</a>
+              <button class="btn btn-ghost btn-sm" type="button" id="copy-btn">დააკოპირეთ ტექსტი</button>
+              <span class="result-status" id="copy-status" role="status" aria-live="polite"></span>
+            </div>
+            <div class="form-note">
+              თუ ელფოსტის პროგრამა არ გაიხსნა, დააკოპირეთ ტექსტი და გამოგვიგზავნეთ ოფიციალურ ელექტრონულ მისამართზე.
+            </div>
           </div>
-          <div class="form-note">
-            თუ ელფოსტის პროგრამა არ გაიხსნა, დააკოპირეთ ტექსტი და გამოგვიგზავნეთ მისამართზე: <strong>karlotabidze@gmail.com</strong>
-          </div>
-        </div>
-      </form>
-    </div>
-  </section>
-</main>
+        </form>
+      </div>
+    </section>
+  </main>
 
-<footer class="wrap foot">
-  <span>© 2026 საქო თრეველი</span>
-  <span>მოგზაურობა საქართველოდან</span>
-</footer>
+  <footer class="wrap foot">
+    <span>© 2026 საქო თრეველი</span>
+    <span>მოგზაურობა საქართველოდან</span>
+  </footer>
 
-<script>
-(function () {
-  // Tbilisi clock on the board
-  var clock = document.getElementById('clock');
-  function tick() {
-    try {
-      clock.textContent = new Intl.DateTimeFormat('en-GB', {
-        hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Tbilisi'
-      }).format(new Date());
-    } catch (e) { clock.textContent = ''; }
-  }
-  tick();
-  setInterval(tick, 30000);
+  <script>
+    (function () {
+      const clock = document.getElementById('clock');
 
-  // Destination buttons prefill the form
-  var destSel = document.getElementById('f-dest');
-  document.querySelectorAll('[data-dest]').forEach(function (a) {
-    a.addEventListener('click', function () {
-      destSel.value = a.getAttribute('data-dest');
-    });
-  });
+      function tick() {
+        if (!clock) return;
+        try {
+          clock.textContent = new Intl.DateTimeFormat('en-GB', {
+            hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Tbilisi'
+          }).format(new Date());
+        } catch (error) {
+          clock.textContent = '';
+        }
+      }
 
-  // Build a ready-to-send request text
-  var form = document.getElementById('req-form');
-  var result = document.getElementById('result');
-  var resultText = document.getElementById('result-text');
-  var copyBtn = document.getElementById('copy-btn');
-  var status = document.getElementById('copy-status');
+      tick();
+      setInterval(tick, 30000);
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var v = function (id) { return document.getElementById(id).value.trim(); };
-    var lines = [
-      'გამარჯობა, საქო თრეველი!',
-      v('f-name') ? 'მე ვარ ' + v('f-name') + '.' : '',
-      'მაინტერესებს მოგზაურობა: ' + v('f-dest') + '.',
-      'გამგზავრების თვე: ' + v('f-month') + '.',
-      'მგზავრების რაოდენობა: ' + (v('f-pax') || '1') + '.',
-      v('f-note') ? 'დამატებით: ' + v('f-note') : '',
-      v('f-phone') ? 'ჩემი ტელეფონი: ' + v('f-phone') : '',
-      'გთხოვთ, მომამზადოთ შეთავაზება.'
-    ].filter(Boolean);
-    resultText.textContent = lines.join('\n');
-    var subject = 'მოთხოვნა: ' + v('f-dest') + ', ' + v('f-month');
-    document.getElementById('mail-link').href = 'mailto:karlotabidze@gmail.com'
-      + '?subject=' + encodeURIComponent(subject)
-      + '&body=' + encodeURIComponent(lines.join('\n'));
-    result.hidden = false;
-    status.textContent = '';
-    result.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-  });
+      const destSel = document.getElementById('f-dest');
+      document.querySelectorAll('[data-dest]').forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (!destSel) return;
+          destSel.value = link.getAttribute('data-dest');
+        });
+      });
 
-  copyBtn.addEventListener('click', function () {
-    var text = resultText.textContent;
-    function fallback() {
-      var r = document.createRange();
-      r.selectNodeContents(resultText);
-      var s = window.getSelection();
-      s.removeAllRanges();
-      s.addRange(r);
-      status.textContent = 'ტექსტი მონიშნულია. დააკოპირეთ ხელით.';
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function () {
-        status.textContent = 'ტექსტი დაკოპირდა. ახლა გამოგვიგზავნეთ ელფოსტით ან დაგვირეკეთ.';
-      }).catch(fallback);
-    } else {
-      fallback();
-    }
-  });
-})();
-</script>
+      const form = document.getElementById('req-form');
+      const result = document.getElementById('result');
+      const resultText = document.getElementById('result-text');
+      const copyBtn = document.getElementById('copy-btn');
+      const status = document.getElementById('copy-status');
+
+      function readField(id) {
+        const el = document.getElementById(id);
+        return el ? el.value.trim() : '';
+      }
+
+      if (form) {
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          const name = readField('f-name');
+          const destination = readField('f-dest');
+
+          if (!name) {
+            alert('გთხოვთ, შეიყვანოთ თქვენი სახელი.');
+            document.getElementById('f-name').focus();
+            return;
+          }
+
+          if (!destination) {
+            alert('გთხოვთ, აირჩიოთ მიმართულება.');
+            destSel.focus();
+            return;
+          }
+
+          const lines = [
+            'გამარჯობა, საქო თრეველი!',
+            name ? 'მე ვარ ' + name + '.' : '',
+            'მაინტერესებს მოგზაურობა: ' + destination + '.',
+            'გამგზავრების თვე: ' + readField('f-month') + '.',
+            'მგზავრების რაოდენობა: ' + (readField('f-pax') || '1') + '.',
+            readField('f-note') ? 'დამატებით: ' + readField('f-note') : '',
+            readField('f-phone') ? 'ჩემი ტელეფონი: ' + readField('f-phone') : '',
+            'გთხოვთ, მომამზადოთ შეთავაზება.'
+          ].filter(Boolean);
+
+          if (resultText) {
+            resultText.textContent = lines.join('\n');
+          }
+
+          const subject = 'მოთხოვნა: ' + destination + ', ' + readField('f-month');
+          const mailLink = document.getElementById('mail-link');
+          if (mailLink) {
+            mailLink.href = 'mailto:karlotabidze@gmail.com'
+              + '?subject=' + encodeURIComponent(subject)
+              + '&body=' + encodeURIComponent(lines.join('\n'));
+          }
+
+          if (result) {
+            result.hidden = false;
+          }
+
+          if (status) {
+            status.textContent = '';
+          }
+
+          result?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        });
+      }
+
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function () {
+          var text = resultText ? resultText.textContent : '';
+
+          function fallback() {
+            if (!resultText) return;
+            const range = document.createRange();
+            range.selectNodeContents(resultText);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            if (status) {
+              status.textContent = 'ტექსტი მონიშნულია. დააკოპირეთ ხელით.';
+            }
+          }
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () {
+              if (status) {
+                status.textContent = 'ტექსტი დაკოპირდა. ახლა გამოგვიგზავნეთ ელფოსტით ან დაგვირეკეთ.';
+              }
+            }).catch(fallback);
+          } else {
+            fallback();
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
