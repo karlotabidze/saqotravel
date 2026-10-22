@@ -905,7 +905,10 @@
       }
 
       function buildGmailUrl(subject, body) {
-        return 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('karlotabidze@gmail.com') + '&su=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        return 'https://mail.google.com/mail/?view=cm&fs=1' +
+          '&to=' + encodeURIComponent('karlotabidze@gmail.com') +
+          '&su=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(body);
       }
 
       function buildMailtoUrl(subject, body) {
@@ -930,7 +933,7 @@
       if (mailLink) {
         mailLink.addEventListener('click', function (event) {
           event.preventDefault();
-          const subject = mailLink.dataset.subject || 'მოთხოვნა';
+          const subject = 'ტურის დაჯავშნა';
           const body = mailLink.dataset.body || '';
           openMailClient(subject, body);
         });
@@ -967,14 +970,13 @@
           ].filter(Boolean);
 
           const bodyText = lines.join('\n');
-          const subject = 'მოთხოვნა: ' + destination + ', ' + readField('f-month');
+          const subject = 'ტურის დაჯავშნა';
 
           if (resultText) {
             resultText.textContent = bodyText;
           }
 
           if (mailLink) {
-            mailLink.dataset.subject = subject;
             mailLink.dataset.body = bodyText;
             mailLink.href = buildGmailUrl(subject, bodyText);
           }
