@@ -8,6 +8,7 @@ const t = (key) => translations[state.lang][key] || key;
 const cityName = (tour) => state.lang === "en" ? tour.cityEn : tour.city;
 const tourName = (tour) => state.lang === "en" ? tour.titleEn : tour.title;
 const tourDescription = (tour) => state.lang === "en" ? tour.descriptionEn : tour.description;
+const tourTypeLabel = (tour) => state.lang === "en" ? ({ nature: "Nature", culture: "Culture", wine: "Wine", adventure: "Adventure" }[tour.type] || tour.type) : tour.typeKa;
 const money = (value) => new Intl.NumberFormat(state.lang === "ka" ? "ka-GE" : "en-US").format(value) + " ₾";
 function safeText(value) { return String(value).replace(/[&<>"']/g, (char) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[char])); }
 
@@ -39,7 +40,7 @@ function renderTours() {
   const list = state.tours.filter((tour) => (!city || tour.city === city) && (!price || tour.price <= price) && (!type || tour.type === type) && (!duration || (duration === "1" ? tour.days === 1 : duration === "2" ? tour.days >= 2 && tour.days <= 3 : tour.days >= 4)));
   const grid = document.getElementById("tour-grid");
   if (!list.length) { grid.innerHTML = '<p class="empty-state">' + t("noTours") + '</p>'; return; }
-  grid.innerHTML = list.map((tour) => '<article class="tour-card"><div class="tour-image" style="background-image:url(\'' + safeText(tour.image) + '\')"><span class="tour-tag">' + safeText(state.lang === "en" ? tour.typeEn : tour.typeKa) + '</span></div><div class="tour-card-body"><div class="tour-meta"><span>⌖ ' + safeText(cityName(tour)) + '</span><span>' + tour.days + ' ' + t("days") + '</span></div><h3>' + safeText(tourName(tour)) + '</h3><p>' + safeText(tourDescription(tour)) + '</p><div class="tour-card-bottom"><span class="tour-price">' + money(tour.price) + ' <small>' + t("perPerson") + '</small></span><button class="text-button" data-details="' + safeText(tour.id) + '">' + t("details") + ' ↗</button></div></div></article>').join("");
+  grid.innerHTML = list.map((tour) => '<article class="tour-card"><div class="tour-image" style="background-image:url(\'' + safeText(tour.image) + '\')"><span class="tour-tag">' + safeText(tourTypeLabel(tour)) + '</span></div><div class="tour-card-body"><div class="tour-meta"><span>⌖ ' + safeText(cityName(tour)) + '</span><span>' + tour.days + ' ' + t("days") + '</span></div><h3>' + safeText(tourName(tour)) + '</h3><p>' + safeText(tourDescription(tour)) + '</p><div class="tour-card-bottom"><span class="tour-price">' + money(tour.price) + ' <small>' + t("perPerson") + '</small></span><button class="text-button" data-details="' + safeText(tour.id) + '">' + t("details") + ' ↗</button></div></div></article>').join("");
   grid.querySelectorAll("[data-details]").forEach((button) => button.addEventListener("click", () => openTour(button.dataset.details)));
 }
 function openTour(id) {
