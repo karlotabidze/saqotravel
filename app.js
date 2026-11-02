@@ -99,7 +99,7 @@ function applyLanguage() {
   populateFlightDestinations();
 }
 function applyTheme() { document.documentElement.dataset.theme = state.theme; const button = document.getElementById("theme-switch"); button.textContent = state.theme === "dark" ? "☀" : "☾"; button.setAttribute("aria-label", t(state.theme === "dark" ? "themeLight" : "themeDark")); localStorage.setItem("saqo-theme", state.theme); }
-function validGeorgianPhone(value) { return /^(?:\\+?995)?5\\d{8}$/.test(value.replace(/[\\s()-]/g, "")); }
+function validGeorgianPhone(value) { return /^(?:\+?995)?5\d{8}$/.test(value.replace(/[\s()-]/g, "")); }
 function setupPhoneValidation(form) { const input = form.querySelector('input[name="phone"]'); if (!input) return; input.addEventListener("input", () => { input.value = input.value.replace(/[^0-9+]/g, ""); input.setCustomValidity(""); }); }
 function setupEvents() {
   ["filter-city","filter-price","filter-duration","filter-type"].forEach((id) => document.getElementById(id).addEventListener("change", renderTours));
