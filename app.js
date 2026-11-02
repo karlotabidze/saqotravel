@@ -20,6 +20,7 @@ async function loadData() {
     state.flights = await flightsResponse.json();
     renderTours();
     populateCities();
+    populateFlightDestinations();
   } catch (error) {
     document.getElementById("tour-grid").innerHTML = '<p class="empty-state">მონაცემების ჩატვირთვა ვერ მოხერხდა. შეამოწმეთ data საქაღალდე.</p>';
     console.error(error);
@@ -61,14 +62,14 @@ function openBooking(tour) {
   document.getElementById("booking-dialog").showModal();
 }
 function airportLabel(code) {
-  const names = { TBS:["თბილისი","Tbilisi"], KUT:["ქუთაისი","Kutaisi"], BUS:["ბათუმი","Batumi"] };
+  const names = { TBS:["თბილისი","Tbilisi"], KUT:["ქუთაისი","Kutaisi"], BUS:["ბათუმი","Batumi"], MEP:["მესტია","Mestia"], AMB:["ამბროლაური","Ambrolauri"], TEL:["თელავი","Telavi"] };
   return (names[code] || [code,code])[state.lang === "en" ? 1 : 0] + " · " + code;
 }
 function populateFlightDestinations() {
   const fromSelect = document.getElementById("flight-from");
   const toSelect = document.getElementById("flight-to");
   const from = fromSelect.value || "TBS";
-  const airports = ["TBS","KUT","BUS"];
+  const airports = ["TBS","KUT","BUS","MEP","AMB","TEL"];
   fromSelect.innerHTML = airports.map(code => '<option value="' + code + '">' + airportLabel(code) + '</option>').join("");
   fromSelect.value = from;
   const options = state.flights.filter(route => route.from === from);
