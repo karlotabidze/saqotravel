@@ -1,8 +1,8 @@
-const state = { tours: [], flights: [], lang: "ka", selectedTour: null };
+const state = { tours: [], flights: [], lang: localStorage.getItem("saqo-language") || "ka", theme: localStorage.getItem("saqo-theme") || "light", selectedTour: null };
 const emailAddress = "karlotabidze@gmail.com";
 const translations = {
-  ka: { navHome:"მთავარი",navTours:"შიდა ტურები",navFlights:"ფრენები",navAbout:"ჩვენს შესახებ",navContact:"კონტაქტი",planTrip:"დაგეგმე მოგზაურობა",heroEyebrow:"აღმოაჩინე საქართველო ჩვენთან ერთად",heroTitle:"შენი შემდეგი თავგადასავალი<br>აქ იწყება.",heroText:"მთები, ზღვა, ღვინო და დაუვიწყარი ისტორიები — აღმოაჩინე საქართველო შენს ტემპში.",exploreTours:"ტურების აღმოჩენა",searchFlights:"შიდა ფრენები",tabTours:"ტურები",tabFlights:"შიდა ფრენები",destination:"მიმართულება",tourType:"ტურის ტიპი",duration:"ხანგრძლივობა",findTour:"ტურის ძიება",from:"საიდან",to:"სად",date:"თარიღი",passengers:"მგზავრები",findFlight:"რეისების ძიება",toursEyebrow:"შენი საქართველო",toursTitle:"აღმოაჩინე ადგილები,<br>რომლებიც არასდროს დაგავიწყდება.",toursIntro:"შერჩეული მარშრუტები საქართველოს ყველა კუთხეში — ქალაქური გასეირნებებიდან მთის თავგადასავლებამდე.",filterCity:"ქალაქი",filterPrice:"მაქს. ფასი",filterDuration:"ხანგრძლივობა",filterType:"ტურის ტიპი",flightEyebrow:"საქართველო ზემოდან",flightTitle:"გადაადგილდი მარტივად.",flightIntro:"მოძებნე შიდა რეისები თბილისს, ბათუმსა და ქუთაისს შორის.",flightHint:"აირჩიე მიმართულება და თარიღი ფრენების მოსაძებნად.",flightDisclaimer:"ფრენები ამ ეტაპზე დემო მონაცემებია. ფასები და განრიგი არ წარმოადგენს რეალურ შეთავაზებას.",aboutEyebrow:"ჩვენი ამბავი",aboutTitle:"საქართველო უფრო მეტია,<br>ვიდრე მიმართულება.",aboutText:"Saqo Travel აერთიანებს ადგილობრივ გამოცდილებას, გამორჩეულ მარშრუტებსა და მარტივ დაგეგმვას. გვჯერა, რომ საუკეთესო მოგზაურობა ადამიანებით, გემოებითა და აღმოჩენებით იქმნება.",regions:"რეგიონი",local:"ადგილობრივი შთაბეჭდილებები",support:"მხარდაჭერა",contactEyebrow:"დავგეგმოთ ერთად",contactTitle:"მზად ხარ ახალი<br>ისტორიისთვის?",contactText:"მოგვწერე სასურველი მიმართულება და ჩვენი გუნდი დაგეხმარება მოგზაურობის დაგეგმვაში.",yourName:"სახელი",yourPhone:"ტელეფონი",yourMessage:"შეტყობინება",sendRequest:"მოთხოვნის გაგზავნა",contactNote:"ღილაკი გახსნის თქვენს ელფოსტის პროგრამას მზა შეტყობინებით.",rights:"ყველა უფლება დაცულია.",backTop:"ზემოთ დაბრუნება ↑",bookingTitle:"ტურის მოთხოვნა",sendBooking:"მოთხოვნის გაგზავნა",details:"დეტალები",book:"დაჯავშნის მოთხოვნა",days:"დღე",perPerson:"ერთ ადამიანზე",noTours:"მითითებული ფილტრებით ტური ვერ მოიძებნა.",included:"ფასში შედის",program:"პროგრამა",route:"მარშრუტი",bookFlight:"დაჯავშნის მოთხოვნა",flightNoResults:"ამ თარიღისთვის დემო რეისი ვერ მოიძებნა." },
-  en: { navHome:"Home",navTours:"Georgia tours",navFlights:"Flights",navAbout:"About us",navContact:"Contact",planTrip:"Plan your trip",heroEyebrow:"Discover Georgia with us",heroTitle:"Your next adventure<br>starts here.",heroText:"Mountains, sea, wine and unforgettable stories — discover Georgia at your own pace.",exploreTours:"Explore tours",searchFlights:"Domestic flights",tabTours:"Tours",tabFlights:"Domestic flights",destination:"Destination",tourType:"Tour type",duration:"Duration",findTour:"Find a tour",from:"From",to:"To",date:"Date",passengers:"Passengers",findFlight:"Search flights",toursEyebrow:"Your Georgia",toursTitle:"Discover places<br>you will never forget.",toursIntro:"Curated routes across Georgia — from city walks to mountain adventures.",filterCity:"City",filterPrice:"Max. price",filterDuration:"Duration",filterType:"Tour type",flightEyebrow:"Georgia from above",flightTitle:"Travel with ease.",flightIntro:"Find domestic flights between Tbilisi, Batumi and Kutaisi.",flightHint:"Choose your route and date to search flights.",flightDisclaimer:"Flights are demo data only. Prices and schedules are not real offers.",aboutEyebrow:"Our story",aboutTitle:"Georgia is more<br>than a destination.",aboutText:"Saqo Travel brings together local expertise, unique routes and easy planning. We believe the best journeys are made of people, flavours and discoveries.",regions:"Regions",local:"Local experiences",support:"Support",contactEyebrow:"Let's plan together",contactTitle:"Ready for a new<br>story?",contactText:"Tell us where you want to go and our team will help plan your journey.",yourName:"Name",yourPhone:"Phone",yourMessage:"Message",sendRequest:"Send request",contactNote:"This opens your email app with a prepared message.",rights:"All rights reserved.",backTop:"Back to top ↑",bookingTitle:"Tour enquiry",sendBooking:"Send enquiry",details:"Details",book:"Request booking",days:"days",perPerson:"per person",noTours:"No tours match your filters.",included:"Included",program:"Itinerary",route:"Route",bookFlight:"Request booking",flightNoResults:"No demo flights found for this date." }
+  ka: { navHome:"მთავარი",navTours:"შიდა ტურები",navFlights:"ფრენები",navAbout:"ჩვენს შესახებ",navContact:"კონტაქტი",planTrip:"დაგეგმე მოგზაურობა",heroEyebrow:"აღმოაჩინე საქართველო ჩვენთან ერთად",heroTitle:"შენი შემდეგი თავგადასავალი<br>აქ იწყება.",heroText:"მთები, ზღვა, ღვინო და დაუვიწყარი ისტორიები — აღმოაჩინე საქართველო შენს ტემპში.",exploreTours:"ტურების აღმოჩენა",searchFlights:"შიდა ფრენები",tabTours:"ტურები",tabFlights:"შიდა ფრენები",destination:"მიმართულება",tourType:"ტურის ტიპი",duration:"ხანგრძლივობა",findTour:"ტურის ძიება",from:"საიდან",to:"სად",date:"თარიღი",passengers:"მგზავრები",findFlight:"რეისების ძიება",toursEyebrow:"შენი საქართველო",toursTitle:"აღმოაჩინე ადგილები,<br>რომლებიც არასდროს დაგავიწყდება.",toursIntro:"შერჩეული მარშრუტები საქართველოს ყველა კუთხეში — ქალაქური გასეირნებებიდან მთის თავგადასავლებამდე.",filterCity:"ქალაქი",filterPrice:"მაქს. ფასი",filterDuration:"ხანგრძლივობა",filterType:"ტურის ტიპი",flightEyebrow:"საქართველო ზემოდან",flightTitle:"გადაადგილდი მარტივად.",flightIntro:"მოძებნე შიდა რეისები თბილისს, ბათუმსა და ქუთაისს შორის.",flightHint:"აირჩიე მიმართულება და თარიღი ფრენების მოსაძებნად.",flightDisclaimer:"ფრენები ამ ეტაპზე დემო მონაცემებია. ფასები და განრიგი არ წარმოადგენს რეალურ შეთავაზებას.",aboutEyebrow:"ჩვენი ამბავი",aboutTitle:"საქართველო უფრო მეტია,<br>ვიდრე მიმართულება.",aboutText:"Saqo Travel აერთიანებს ადგილობრივ გამოცდილებას, გამორჩეულ მარშრუტებსა და მარტივ დაგეგმვას. გვჯერა, რომ საუკეთესო მოგზაურობა ადამიანებით, გემოებითა და აღმოჩენებით იქმნება.",regions:"რეგიონი",local:"ადგილობრივი შთაბეჭდილებები",support:"მხარდაჭერა",contactEyebrow:"დავგეგმოთ ერთად",contactTitle:"მზად ხარ ახალი<br>ისტორიისთვის?",contactText:"მოგვწერე სასურველი მიმართულება და ჩვენი გუნდი დაგეხმარება მოგზაურობის დაგეგმვაში.",yourName:"სახელი",yourPhone:"ტელეფონი",yourMessage:"შეტყობინება",sendRequest:"მოთხოვნის გაგზავნა",contactNote:"მოთხოვნა გაიგზავნება პირდაპირ ჩვენს ელფოსტაზე.",phoneInvalid:"შეიყვანეთ ქართული მობილურის ნომერი ფორმატით +995 5XX XXX XXX.",sendSuccess:"მოთხოვნა წარმატებით გაიგზავნა. მადლობა!",sendError:"მოთხოვნის გაგზავნა ვერ მოხერხდა. სცადეთ მოგვიანებით.",namePlaceholder:"თქვენი სახელი",phonePlaceholder:"+995 5XX XXX XXX",messagePlaceholder:"სად გსურთ მოგზაურობა?",themeLight:"ღია რეჟიმი",themeDark:"მუქი რეჟიმი",allDestinations:"ყველა მიმართულება",allTypes:"ყველა ტიპი",nature:"ბუნება",culture:"კულტურა",wine:"ღვინო",adventure:"თავგადასავალი",anyDuration:"ნებისმიერი",oneDay:"1 დღე",twoThreeDays:"2–3 დღე",fourPlusDays:"4+ დღე",allCities:"ყველა ქალაქი",upTo100:"100 ₾-მდე",upTo200:"200 ₾-მდე",upTo400:"400 ₾-მდე",rights:"ყველა უფლება დაცულია.",backTop:"ზემოთ დაბრუნება ↑",bookingTitle:"ტურის მოთხოვნა",sendBooking:"მოთხოვნის გაგზავნა",details:"დეტალები",book:"დაჯავშნის მოთხოვნა",days:"დღე",perPerson:"ერთ ადამიანზე",noTours:"მითითებული ფილტრებით ტური ვერ მოიძებნა.",included:"ფასში შედის",program:"პროგრამა",route:"მარშრუტი",bookFlight:"დაჯავშნის მოთხოვნა",flightNoResults:"ამ თარიღისთვის დემო რეისი ვერ მოიძებნა." },
+  en: { navHome:"Home",navTours:"Georgia tours",navFlights:"Flights",navAbout:"About us",navContact:"Contact",planTrip:"Plan your trip",heroEyebrow:"Discover Georgia with us",heroTitle:"Your next adventure<br>starts here.",heroText:"Mountains, sea, wine and unforgettable stories — discover Georgia at your own pace.",exploreTours:"Explore tours",searchFlights:"Domestic flights",tabTours:"Tours",tabFlights:"Domestic flights",destination:"Destination",tourType:"Tour type",duration:"Duration",findTour:"Find a tour",from:"From",to:"To",date:"Date",passengers:"Passengers",findFlight:"Search flights",toursEyebrow:"Your Georgia",toursTitle:"Discover places<br>you will never forget.",toursIntro:"Curated routes across Georgia — from city walks to mountain adventures.",filterCity:"City",filterPrice:"Max. price",filterDuration:"Duration",filterType:"Tour type",flightEyebrow:"Georgia from above",flightTitle:"Travel with ease.",flightIntro:"Find domestic flights between Tbilisi, Batumi and Kutaisi.",flightHint:"Choose your route and date to search flights.",flightDisclaimer:"Flights are demo data only. Prices and schedules are not real offers.",aboutEyebrow:"Our story",aboutTitle:"Georgia is more<br>than a destination.",aboutText:"Saqo Travel brings together local expertise, unique routes and easy planning. We believe the best journeys are made of people, flavours and discoveries.",regions:"Regions",local:"Local experiences",support:"Support",contactEyebrow:"Let's plan together",contactTitle:"Ready for a new<br>story?",contactText:"Tell us where you want to go and our team will help plan your journey.",yourName:"Name",yourPhone:"Phone",yourMessage:"Message",sendRequest:"Send request",contactNote:"Your request will be sent directly to our email.",phoneInvalid:"Enter a Georgian mobile number in the format +995 5XX XXX XXX.",sendSuccess:"Your request was sent successfully. Thank you!",sendError:"Could not send your request. Please try again.",namePlaceholder:"Your name",phonePlaceholder:"+995 5XX XXX XXX",messagePlaceholder:"Where would you like to travel?",themeLight:"Light mode",themeDark:"Dark mode",allDestinations:"All destinations",allTypes:"All types",nature:"Nature",culture:"Culture",wine:"Wine",adventure:"Adventure",anyDuration:"Any duration",oneDay:"1 day",twoThreeDays:"2–3 days",fourPlusDays:"4+ days",allCities:"All cities",upTo100:"Up to ₾100",upTo200:"Up to ₾200",upTo400:"Up to ₾400",rights:"All rights reserved.",backTop:"Back to top ↑",bookingTitle:"Tour enquiry",sendBooking:"Send enquiry",details:"Details",book:"Request booking",days:"days",perPerson:"per person",noTours:"No tours match your filters.",included:"Included",program:"Itinerary",route:"Route",bookFlight:"Request booking",flightNoResults:"No demo flights found for this date." }
 };
 const t = (key) => translations[state.lang][key] || key;
 const cityName = (tour) => state.lang === "en" ? tour.cityEn : tour.city;
@@ -29,7 +29,8 @@ function populateCities() {
   const cities = [...new Set(state.tours.map((tour) => tour.city))];
   ["quick-city","filter-city"].forEach((id) => {
     const select = document.getElementById(id);
-    cities.forEach((city) => { const option = document.createElement("option"); option.value = city; option.textContent = city; select.append(option); });
+    select.querySelectorAll("option:not(:first-child)").forEach((option) => option.remove());
+    cities.forEach((city) => { const option = document.createElement("option"); option.value = city; const tour = state.tours.find((item) => item.city === city); option.textContent = state.lang === "en" && tour ? tour.cityEn : city; select.append(option); });
   });
 }
 function renderTours() {
@@ -75,8 +76,13 @@ function applyLanguage() {
   document.documentElement.lang = state.lang;
   document.querySelectorAll("[data-i18n]").forEach((element) => { const value = t(element.dataset.i18n); if (value.includes("<br>")) element.innerHTML = value; else element.textContent = value; });
   document.getElementById("language-switch").textContent = state.lang === "ka" ? "EN" : "KA";
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => { element.placeholder = t(element.dataset.i18nPlaceholder); });
+  localStorage.setItem("saqo-language", state.lang);
   renderTours();
 }
+function applyTheme() { document.documentElement.dataset.theme = state.theme; const button = document.getElementById("theme-switch"); button.textContent = state.theme === "dark" ? "☀" : "☾"; button.setAttribute("aria-label", t(state.theme === "dark" ? "themeLight" : "themeDark")); localStorage.setItem("saqo-theme", state.theme); }
+function validGeorgianPhone(value) { return new RegExp("^\\+9955\\d{8}$").test(value.replaceAll(" ", "")); }
+function setupPhoneValidation(form) { const input = form.querySelector('input[name="phone"]'); if (!input) return; input.addEventListener("input", () => { input.value = input.value.replace(/[^0-9+]/g, ""); input.setCustomValidity(""); }); }
 function setupEvents() {
   ["filter-city","filter-price","filter-duration","filter-type"].forEach((id) => document.getElementById(id).addEventListener("change", renderTours));
   document.getElementById("tour-search").addEventListener("submit", (event) => {
@@ -100,7 +106,8 @@ function setupEvents() {
     renderFlights(from, to, document.getElementById("flight-date").value, Number(document.getElementById("flight-pax").value));
     document.getElementById("flights").scrollIntoView({ behavior:"smooth" });
   });
-  document.getElementById("language-switch").addEventListener("click", () => { state.lang = state.lang === "ka" ? "en" : "ka"; applyLanguage(); });
+  document.getElementById("language-switch").addEventListener("click", () => { state.lang = state.lang === "ka" ? "en" : "ka"; applyLanguage(); applyTheme(); });
+  document.getElementById("theme-switch").addEventListener("click", () => { state.theme = state.theme === "light" ? "dark" : "light"; applyTheme(); });
   document.getElementById("menu-toggle").addEventListener("click", () => {
     const nav = document.getElementById("main-nav");
     const open = nav.classList.toggle("open");
@@ -115,16 +122,33 @@ function setupEvents() {
     const body = "ტურის მოთხოვნა\nტური: " + data.get("tour") + "\nსახელი: " + data.get("name") + "\nტელეფონი: " + data.get("phone") + "\nთარიღი: " + data.get("date") + "\nადამიანები: " + data.get("people");
     window.location.href = "mailto:" + emailAddress + "?subject=" + encodeURIComponent("Saqo Travel — ტურის მოთხოვნა") + "&body=" + encodeURIComponent(body);
   });
-  document.getElementById("contact-form").addEventListener("submit", (event) => {
+  const contactForm = document.getElementById("contact-form");
+  setupPhoneValidation(contactForm);
+  setupPhoneValidation(document.getElementById("booking-form"));
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const body = "სახელი: " + data.get("name") + "\nტელეფონი: " + data.get("phone") + "\nშეტყობინება: " + data.get("message");
-    window.location.href = "mailto:" + emailAddress + "?subject=" + encodeURIComponent("Saqo Travel — ახალი მოთხოვნა") + "&body=" + encodeURIComponent(body);
+    const form = event.currentTarget;
+    const phone = form.elements.phone;
+    if (!validGeorgianPhone(phone.value)) { phone.setCustomValidity(t("phoneInvalid")); phone.reportValidity(); return; }
+    const button = form.querySelector('button[type="submit"]');
+    const note = form.querySelector(".form-note");
+    button.disabled = true;
+    const originalText = button.textContent;
+    button.textContent = state.lang === "ka" ? "იგზავნება..." : "Sending...";
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/" + emailAddress, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ name: form.elements.name.value.trim(), phone: phone.value.trim(), message: form.elements.message.value.trim(), _subject: "Saqo Travel — ახალი მოთხოვნა", _template: "table", _captcha: "false" }) });
+      const result = await response.json();
+      if (!response.ok || result.success !== "true") throw new Error(result.message || "Email delivery failed");
+      note.textContent = t("sendSuccess"); note.classList.add("form-success"); form.reset();
+    } catch (error) { console.error(error); note.textContent = t("sendError") + " " + emailAddress; note.classList.remove("form-success"); }
+    finally { button.disabled = false; button.textContent = originalText; }
   });
 }
 document.getElementById("year").textContent = new Date().getFullYear();
 const today = new Date(); today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
 document.getElementById("flight-date").min = today.toISOString().slice(0,10);
 document.getElementById("flight-date").value = today.toISOString().slice(0,10);
+applyLanguage();
+applyTheme();
 setupEvents();
 loadData();
