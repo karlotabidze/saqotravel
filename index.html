@@ -27,6 +27,7 @@
     </nav>
     <div class="header-actions">
       <button class="language-switch" id="language-switch" type="button" aria-label="Switch language">EN</button>
+      <button class="theme-switch" id="theme-switch" type="button" aria-label="Dark mode" title="Dark mode">☾</button>
       <a class="header-cta" href="#tours" data-i18n="planTrip">დაგეგმე მოგზაურობა</a>
     </div>
   </header>
@@ -101,13 +102,13 @@
     <section class="contact-section" id="contact">
       <div class="wrap contact-grid">
         <div><p class="eyebrow light" data-i18n="contactEyebrow">დავგეგმოთ ერთად</p><h2 data-i18n="contactTitle">მზად ხარ ახალი<br>ისტორიისთვის?</h2><p data-i18n="contactText">მოგვწერე სასურველი მიმართულება და ჩვენი გუნდი დაგეხმარება მოგზაურობის დაგეგმვაში.</p><a class="contact-email" href="mailto:karlotabidze@gmail.com">karlotabidze@gmail.com</a></div>
-        <form class="contact-form" id="contact-form"><label><span data-i18n="yourName">სახელი</span><input name="name" required placeholder="თქვენი სახელი"></label><label><span data-i18n="yourPhone">ტელეფონი</span><input name="phone" type="tel" required placeholder="+995 5XX XX XX XX"></label><label><span data-i18n="yourMessage">შეტყობინება</span><textarea name="message" rows="3" required placeholder="სად გსურთ მოგზაურობა?"></textarea></label><button class="button button-primary" type="submit" data-i18n="sendRequest">მოთხოვნის გაგზავნა</button><p class="form-note" data-i18n="contactNote">ღილაკი გახსნის თქვენს ელფოსტის პროგრამას მზა შეტყობინებით.</p></form>
+        <form class="contact-form" id="contact-form"><label><span data-i18n="yourName">სახელი</span><input name="name" required placeholder="თქვენი სახელი" data-i18n-placeholder="namePlaceholder"></label><label><span data-i18n="yourPhone">ტელეფონი</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+995 5XX XXX XXX" data-i18n-placeholder="phonePlaceholder"></label><label><span data-i18n="yourMessage">შეტყობინება</span><textarea name="message" rows="3" required placeholder="სად გსურთ მოგზაურობა?" data-i18n-placeholder="messagePlaceholder"></textarea></label><button class="button button-primary" type="submit" data-i18n="sendRequest">მოთხოვნის გაგზავნა</button><p class="form-note" data-i18n="contactNote">მოთხოვნა გაიგზავნება პირდაპირ ჩვენს ელფოსტაზე.</p></form>
       </div>
     </section>
   </main>
   <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-mark">S</span><span class="brand-copy"><strong>SAQO</strong><small>TRAVEL</small></span></a><span>© <span id="year"></span> Saqo Travel. <span data-i18n="rights">ყველა უფლება დაცულია.</span></span><a href="#home" data-i18n="backTop">ზემოთ დაბრუნება ↑</a></footer>
 
   <dialog class="tour-dialog" id="tour-dialog"><button class="dialog-close" id="dialog-close" aria-label="დახურვა">×</button><div id="tour-detail"></div></dialog>
-  <dialog class="booking-dialog" id="booking-dialog"><button class="dialog-close" id="booking-close" aria-label="დახურვა">×</button><h2 data-i18n="bookingTitle">ტურის მოთხოვნა</h2><form id="booking-form"><input type="hidden" name="tour"><label><span data-i18n="yourName">სახელი</span><input name="name" required></label><label><span data-i18n="yourPhone">ტელეფონი</span><input name="phone" type="tel" required></label><label><span data-i18n="date">თარიღი</span><input name="date" type="date" required></label><label><span data-i18n="passengers">მგზავრები</span><input name="people" type="number" min="1" max="20" value="2" required></label><button class="button button-dark" type="submit" data-i18n="sendBooking">მოთხოვნის გაგზავნა</button></form></dialog>
+  <dialog class="booking-dialog" id="booking-dialog"><button class="dialog-close" id="booking-close" aria-label="დახურვა">×</button><h2 data-i18n="bookingTitle">ტურის მოთხოვნა</h2><form id="booking-form"><input type="hidden" name="tour"><label><span data-i18n="yourName">სახელი</span><input name="name" required></label><label><span data-i18n="yourPhone">ტელეფონი</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+995 5XX XXX XXX" required></label><label><span data-i18n="date">თარიღი</span><input name="date" type="date" required></label><label><span data-i18n="passengers">მგზავრები</span><input name="people" type="number" min="1" max="20" value="2" required></label><button class="button button-dark" type="submit" data-i18n="sendBooking">მოთხოვნის გაგზავნა</button></form></dialog>
 </body>
 </html>
