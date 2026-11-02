@@ -53,9 +53,9 @@
         <button class="search-tab" data-tab="flight-search" data-i18n="tabFlights">შიდა ფრენები</button>
       </div>
       <form class="search-form" id="tour-search">
-        <label><span data-i18n="destination">მიმართულება</span><select id="quick-city"><option value="">ყველა მიმართულება</option></select></label>
-        <label><span data-i18n="tourType">ტურის ტიპი</span><select id="quick-type"><option value="">ყველა ტიპი</option><option value="nature">ბუნება</option><option value="culture">კულტურა</option><option value="wine">ღვინო</option><option value="adventure">თავგადასავალი</option></select></label>
-        <label><span data-i18n="duration">ხანგრძლივობა</span><select id="quick-duration"><option value="">ნებისმიერი</option><option value="1">1 დღე</option><option value="2">2–3 დღე</option><option value="4">4+ დღე</option></select></label>
+        <label><span data-i18n="destination">მიმართულება</span><select id="quick-city"><option value="" data-i18n="allDestinations">ყველა მიმართულება</option></select></label>
+        <label><span data-i18n="tourType">ტურის ტიპი</span><select id="quick-type"><option value="" data-i18n="allTypes">ყველა ტიპი</option><option value="nature" data-i18n="nature">ბუნება</option><option value="culture" data-i18n="culture">კულტურა</option><option value="wine" data-i18n="wine">ღვინო</option><option value="adventure" data-i18n="adventure">თავგადასავალი</option></select></label>
+        <label><span data-i18n="duration">ხანგრძლივობა</span><select id="quick-duration"><option value="" data-i18n="anyDuration">ნებისმიერი</option><option value="1" data-i18n="oneDay">1 დღე</option><option value="2" data-i18n="twoThreeDays">2–3 დღე</option><option value="4" data-i18n="fourPlusDays">4+ დღე</option></select></label>
         <button class="button button-dark" type="submit" data-i18n="findTour">ტურის ძიება</button>
       </form>
       <form class="search-form flight-search hidden" id="flight-search">
@@ -73,8 +73,8 @@
         <p data-i18n="toursIntro">შერჩეული მარშრუტები საქართველოს ყველა კუთხეში — ქალაქური გასეირნებიდან მთის თავგადასავლებამდე.</p>
       </div>
       <div class="filters">
-        <label><span data-i18n="filterCity">ქალაქი</span><select id="filter-city"><option value="">ყველა ქალაქი</option></select></label>
-        <label><span data-i18n="filterPrice">მაქს. ფასი</span><select id="filter-price"><option value="">ნებისმიერი</option><option value="100">100 ₾-მდე</option><option value="200">200 ₾-მდე</option><option value="400">400 ₾-მდე</option></select></label>
+        <label><span data-i18n="filterCity">ქალაქი</span><select id="filter-city"><option value="" data-i18n="allCities">ყველა ქალაქი</option></select></label>
+        <label><span data-i18n="filterPrice">მაქს. ფასი</span><select id="filter-price"><option value="">ნებისმიერი</option><option value="100" data-i18n="upTo100">100 ₾-მდე</option><option value="200" data-i18n="upTo200">200 ₾-მდე</option><option value="400" data-i18n="upTo400">400 ₾-მდე</option></select></label>
         <label><span data-i18n="filterDuration">ხანგრძლივობა</span><select id="filter-duration"><option value="">ყველა</option><option value="1">1 დღე</option><option value="2">2–3 დღე</option><option value="4">4+ დღე</option></select></label>
         <label><span data-i18n="filterType">ტურის ტიპი</span><select id="filter-type"><option value="">ყველა ტიპი</option><option value="nature">ბუნება</option><option value="culture">კულტურა</option><option value="wine">ღვინო</option><option value="adventure">თავგადასავალი</option></select></label>
       </div>
