@@ -886,5 +886,13 @@
     "cityEn": "Erbil",
     "country": "ერაყი",
     "countryEn": "Iraq"
+  },
+  {
+    "from": "KUT",
+    "to": "MEP",
+    "city": "მესტია",
+    "cityEn": "Mestia",
+    "country": "საქართველო",
+    "countryEn": "Georgia"
   }
 ]
