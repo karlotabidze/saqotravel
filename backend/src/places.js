@@ -1,5 +1,5 @@
 const API = "https://places.googleapis.com/v1";
-const SEARCH_MASK = "places.id";
+const SEARCH_MASK = "places.id,nextPageToken";
 const DETAILS_MASK = [
   "id", "displayName", "location", "formattedAddress", "addressComponents",
   "primaryType", "types", "rating", "userRatingCount", "photos",
